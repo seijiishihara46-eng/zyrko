@@ -25,3 +25,8 @@ The foundation. Rules live here.
 | File                 | Description                                           |
 |----------------------|-------------------------------------------------------|
 | `zyrko-engine.md`    | Six structural primitives, interactions, four-frame analysis |
+| `zyrko-topology.md`  | Zyrko interpreted as a topology-based perception system      |
+| `observer-model.md`  | Formal model of the Observer: definition, limits, effects    |
+| `phase-transitions.md`   | Phase defined as observational stability; low/mid/high     |
+| `forbidden-structures.md`     | Hard prohibitions: interpretation, visual, narrative, emotional |
+| `manifestation-conditions.md` | Six necessary conditions; sufficiency; validity; partial cases  |

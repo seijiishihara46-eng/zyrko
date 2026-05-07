@@ -29,4 +29,6 @@ When something belongs here, it will be clear.
 
 ## Contents
 
-_Nothing._
+| File                | Description                                      |
+|---------------------|--------------------------------------------------|
+| `void-structure.md` | Formal structural definition of VOID             |
