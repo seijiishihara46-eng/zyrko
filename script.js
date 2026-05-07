@@ -26,8 +26,10 @@
   let observerState = 'distant';
   let letterStage   = 0;
   let stageTimeouts = [];
-  let stableAccum   = 0;     // ms cursor has been stable while adjacent
-  let lastLoop      = Date.now();
+  let stableAccum      = 0;     // ms cursor has been stable while adjacent
+  let lastLoop         = Date.now();
+  const isMobile       = window.matchMedia('(pointer: coarse)').matches;
+  let lastInteractTime = 0;    // last touch timestamp (mobile only)
 
   // ── velocity window (stability) ───────────────────────────────────────────
   // Rolling average of cursor speed samples.
@@ -163,6 +165,17 @@
     const stab = stability();
     const c    = voidCenter();
 
+    // ── mobile: inject stillness when idle, drift cursor toward center ──
+    // Without touch interaction the cursor rests at center (inside prox zone).
+    // After 2.2 s of inactivity, zero-speed samples fill the velocity buffer
+    // so stability rises and the state machine can reach 'absorbed' passively.
+    if (isMobile && now - lastInteractTime > 2200) {
+      VEL_BUF.push(0);
+      if (VEL_BUF.length > VEL_SIZE) VEL_BUF.shift();
+      mouseX += (window.innerWidth  / 2 - mouseX) * 0.006;
+      mouseY += (window.innerHeight / 2 - mouseY) * 0.006;
+    }
+
     // ── state machine ──────────────────────────────────────────────────────
     if (observerState === 'distant') {
       stableAccum = 0;
@@ -283,6 +296,19 @@
     sampleVelocity(mouseX, mouseY);
     checkTrace(mouseX, mouseY);
   });
+
+  if (isMobile) {
+    const onTouch = e => {
+      if (!e.touches.length) return;
+      mouseX = e.touches[0].clientX;
+      mouseY = e.touches[0].clientY;
+      lastInteractTime = Date.now();
+      sampleVelocity(mouseX, mouseY);
+      checkTrace(mouseX, mouseY);
+    };
+    document.addEventListener('touchstart', onTouch, { passive: true });
+    document.addEventListener('touchmove',  onTouch, { passive: true });
+  }
 
   // ── start ─────────────────────────────────────────────────────────────────
   loop();

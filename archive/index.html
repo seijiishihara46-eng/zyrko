@@ -189,6 +189,16 @@
       font-weight: 300;
     }
 
+    /* ── mobile ── */
+    @media (max-width: 680px) {
+      body { cursor: auto; }
+      .cursor-dot { display: none; }
+      .image-card { cursor: auto; }
+      #obs-close  { cursor: auto; }
+      .doc-entry  { max-width: 145px; }
+      .field-id, .obs-counter { font-size: 0.44rem; }
+    }
+
     /* ── observation view (isolated lightbox) ── */
 
     #obs-view {
@@ -489,7 +499,7 @@
       counterEl.textContent = `${mm}:${ss}`;
     }, 1000);
 
-    // ── mouse ─────────────────────────────────────────────────────
+    // ── mouse / touch ─────────────────────────────────────────────
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -497,10 +507,19 @@
       dot.style.top  = mouseY + 'px';
     });
 
+    const onTouch = e => {
+      if (!e.touches.length) return;
+      mouseX = e.touches[0].clientX;
+      mouseY = e.touches[0].clientY;
+    };
+    document.addEventListener('touchstart', onTouch, { passive: true });
+    document.addEventListener('touchmove',  onTouch, { passive: true });
+
     // ── rAF loop (drift only) ─────────────────────────────────────
     function loop(t) {
-      const vw2 = window.innerWidth  * 0.42;
-      const vh2 = window.innerHeight * 0.42;
+      const mobile = window.innerWidth < 680;
+      const vw2 = window.innerWidth  * (mobile ? 0.24 : 0.42);
+      const vh2 = window.innerHeight * (mobile ? 0.30 : 0.42);
 
       entries.forEach(e => {
         e.baseX = lerp(e.baseX, e.targetX, 6e-4);

@@ -339,3 +339,48 @@ body.page {
   transform: translate(-50%, -50%);
   z-index: 9999;
 }
+
+/* ── mobile ── */
+
+@media (max-width: 680px) {
+
+  body { cursor: auto; }
+
+  .cursor-dot { display: none; }
+
+  nav {
+    top: 1.4rem;
+    right: 0;
+    left: 0;
+    justify-content: center;
+    gap: 1.1rem;
+  }
+
+  /* observer field sits off-screen on small viewports — suppress cleanly */
+  #observer-field { display: none; }
+
+  body.page {
+    padding: 5rem 1.4rem 4rem;
+  }
+
+  .page-line      { font-size: 0.78rem; }
+  .page-line.dim  { font-size: 0.72rem; }
+  .page-line.faint{ font-size: 0.72rem; }
+
+  /* collapse two-column grids to single column */
+  .log-entry {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 1.4rem;
+  }
+  .log-date  { margin-bottom: 0.2rem; }
+  .log-desc  { grid-column: 1; }
+
+  .component-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+    margin-bottom: 1.8rem;
+  }
+  .component-name { margin-bottom: 0.25rem; }
+
+}

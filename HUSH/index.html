@@ -85,6 +85,15 @@
         dot.style.top  = mouseY + 'px';
       });
 
+      // touch: proximity follows finger position
+      const onTouch = e => {
+        if (!e.touches.length) return;
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+      };
+      document.addEventListener('touchstart', onTouch, { passive: true });
+      document.addEventListener('touchmove',  onTouch, { passive: true });
+
       function loop() {
         t += 0.0018;
 

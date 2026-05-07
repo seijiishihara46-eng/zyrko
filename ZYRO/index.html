@@ -88,6 +88,15 @@
         dot.style.top  = mouseY + 'px';
       });
 
+      // touch: gravitational pull follows finger
+      const onTouch = e => {
+        if (!e.touches.length) return;
+        mouseX = e.touches[0].clientX;
+        mouseY = e.touches[0].clientY;
+      };
+      document.addEventListener('touchstart', onTouch, { passive: true });
+      document.addEventListener('touchmove',  onTouch, { passive: true });
+
       function loop() {
         const t = Date.now() / 1000;
         const W = canvas.width;
