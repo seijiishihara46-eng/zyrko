@@ -6,46 +6,25 @@
   <title>Zyrko — Archive</title>
   <link rel="stylesheet" href="../style.css">
   <style>
-    html, body { overflow: hidden; height: 100%; }
 
-    body { cursor: none; }
+    /* ── base ── */
+    html { overflow-x: hidden; }
+    body { cursor: none; overflow-x: hidden; }
 
-    /* ── fixed field markers ── */
+    /* ── drift field (fixed, fades on scroll) ── */
 
-    .field-id {
+    #drift-field {
       position: fixed;
-      bottom: 1.8rem;
-      left: 2rem;
-      font-size: 0.5rem;
-      letter-spacing: 0.24em;
-      text-transform: uppercase;
-      color: var(--text-dim);
-      opacity: 0.4;
+      inset: 0;
+      z-index: 10;
       pointer-events: none;
-      z-index: 50;
-      text-indent: 0.24em;
+      transition: opacity 0.5s ease;
     }
-
-    .observation-counter {
-      position: fixed;
-      bottom: 1.8rem;
-      right: 2rem;
-      font-size: 0.5rem;
-      letter-spacing: 0.14em;
-      color: var(--text-dim);
-      opacity: 0.25;
-      pointer-events: none;
-      z-index: 50;
-      font-variant-numeric: tabular-nums;
-    }
-
-    /* ── document entries ── */
 
     .doc-entry {
       position: fixed;
       top: 50%;
       left: 50%;
-      /* transform controlled entirely by JS */
       max-width: 210px;
       pointer-events: none;
       will-change: transform, opacity;
@@ -67,7 +46,6 @@
       color: var(--text-mid);
       letter-spacing: 0.04em;
       margin-bottom: 0.55rem;
-      line-height: 1.4;
     }
 
     .doc-text {
@@ -76,7 +54,6 @@
       color: var(--text-dim);
       letter-spacing: 0.03em;
       line-height: 1.9;
-      /* color driven by JS for obscures mode */
     }
 
     .doc-rule {
@@ -86,11 +63,193 @@
       margin-bottom: 0.55rem;
       opacity: 0.6;
     }
+
+    .field-id {
+      position: fixed;
+      bottom: 1.8rem;
+      left: 2rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      opacity: 0.4;
+      pointer-events: none;
+      text-indent: 0.24em;
+    }
+
+    .obs-counter {
+      position: fixed;
+      bottom: 1.8rem;
+      right: 2rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.14em;
+      color: var(--text-dim);
+      opacity: 0.25;
+      pointer-events: none;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scroll-prompt {
+      position: fixed;
+      bottom: 1.8rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.48rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      opacity: 0;
+      pointer-events: none;
+      text-indent: 0.2em;
+      transition: opacity 1.5s ease;
+      white-space: nowrap;
+    }
+
+    /* ── scroll container ── */
+
+    #scroll-body {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* First viewport: empty — reserved for drift field viewing */
+    .drift-zone {
+      height: 100vh;
+    }
+
+    /* ── records section ── */
+
+    .records-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 5vh 2rem 8vh;
+      gap: 1.4rem;
+    }
+
+    .records-rule {
+      width: 1px;
+      height: 60px;
+      background: var(--secondary);
+      border: none;
+      opacity: 0.5;
+    }
+
+    .records-label {
+      font-size: 0.5rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-indent: 0.26em;
+      opacity: 0.5;
+    }
+
+    /* ── image records ── */
+
+    .image-record {
+      display: flex;
+      flex-direction: column;
+      padding: 10vh 5vw 12vh;
+      opacity: 0;
+      transition: opacity 2.6s ease;
+    }
+
+    .image-record.visible { opacity: 1; }
+
+    /* Alternating alignment for non-gallery feel */
+    .image-record:nth-child(odd)  { align-items: center; }
+    .image-record:nth-child(even) { align-items: flex-end; padding-right: 12vw; }
+
+    .image-record:nth-child(3) { align-items: flex-start; padding-left: 10vw; }
+
+    .image-card {
+      display: block;
+      cursor: none;
+      position: relative;
+    }
+
+    .image-card img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      filter: grayscale(100%);
+      opacity: 0.88;
+      transition: opacity 1.8s ease, filter 1.8s ease;
+    }
+
+    .image-card:hover img {
+      opacity: 0.72;
+    }
+
+    .image-filename {
+      margin-top: 1.2rem;
+      font-size: 0.52rem;
+      letter-spacing: 0.22em;
+      color: var(--text-dim);
+      text-indent: 0.22em;
+      font-weight: 300;
+    }
+
+    /* ── observation view (isolated lightbox) ── */
+
+    #obs-view {
+      position: fixed;
+      inset: 0;
+      background: #030303;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1.1s ease;
+    }
+
+    #obs-view.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    #obs-view img {
+      max-width: 88vw;
+      max-height: 80vh;
+      width: auto;
+      height: auto;
+      filter: grayscale(100%);
+      display: block;
+    }
+
+    #obs-name {
+      margin-top: 1.8rem;
+      font-size: 0.5rem;
+      letter-spacing: 0.26em;
+      color: var(--text-dim);
+      text-indent: 0.26em;
+    }
+
+    #obs-close {
+      position: fixed;
+      top: 1.8rem;
+      right: 2rem;
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      cursor: none;
+      padding: 0.4rem 0;
+      text-indent: 0.2em;
+      transition: color 0.5s ease;
+    }
+
+    #obs-close:hover { color: var(--text-mid); }
+
   </style>
 </head>
 <body>
 
-  <nav>
+  <nav style="z-index:400;">
     <a href="../" class="nav-home">ZYRO</a>
     <a href="../about/">ABOUT</a>
     <a href="../hush/">HUSH</a>
@@ -98,328 +257,239 @@
     <a href="../product/">PRODUCT</a>
   </nav>
 
-  <!-- topology-paper: always present, normal -->
-  <div class="doc-entry" id="e-topology">
-    <span class="doc-label">CORE</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">topology-paper</p>
-    <p class="doc-text">
-      Zyrko as a topology-based<br>
-      perception system.<br>
-      Observation changes the topology.
-    </p>
+  <!-- ── drift field ─────────────────────────────────────────── -->
+
+  <div id="drift-field">
+
+    <div class="doc-entry" id="e-topology">
+      <span class="doc-label">CORE</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">topology-paper</p>
+      <p class="doc-text">Zyrko as a topology-based<br>perception system.<br>Observation changes the topology.</p>
+    </div>
+
+    <div class="doc-entry" id="e-observer">
+      <span class="doc-label">CORE</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">observer-notes</p>
+      <p class="doc-text">the act of mapping<br>changes the domain<br>it cannot observe its own effect</p>
+    </div>
+
+    <div class="doc-entry" id="e-void">
+      <span class="doc-label">VOID</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">void-structure</p>
+      <p class="doc-text">present without content<br>structure held without purpose<br>not potential. not placeholder.</p>
+    </div>
+
+    <div class="doc-entry" id="e-phase">
+      <span class="doc-label">CORE</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">phase-record</p>
+      <p class="doc-text" id="e-phase-text">observational stability<br>phase.low · phase.mid · phase.high<br>not progress. position.</p>
+    </div>
+
+    <div class="doc-entry" id="e-manifest">
+      <span class="doc-label">CORE</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">manifestation-log</p>
+      <p class="doc-text">six conditions.<br>when all hold, crossing occurs.<br>not a decision. a structural consequence.</p>
+    </div>
+
+    <div class="doc-entry" id="e-hush">
+      <span class="doc-label">HUSH</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">hush-boundary</p>
+      <p class="doc-text">it holds what does not<br>need to surface<br>the boundary reduces</p>
+    </div>
+
+    <div class="doc-entry" id="e-forbidden">
+      <span class="doc-label">CORE</span>
+      <div class="doc-rule"></div>
+      <p class="doc-title">forbidden-register</p>
+      <p class="doc-text" id="e-forbidden-text">twenty-two prohibitions<br>across four categories<br>structure defined by refusal</p>
+    </div>
+
+    <p class="field-id">Archive</p>
+    <p class="obs-counter" id="obs-counter">00:00</p>
+    <p class="scroll-prompt" id="scroll-prompt">manifestation records below</p>
+
   </div>
 
-  <!-- observer-notes: hides when cursor approaches -->
-  <div class="doc-entry" id="e-observer">
-    <span class="doc-label">CORE</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">observer-notes</p>
-    <p class="doc-text">
-      the act of mapping<br>
-      changes the domain<br>
-      it cannot observe its own effect
-    </p>
+  <!-- ── scroll body ──────────────────────────────────────────── -->
+
+  <div id="scroll-body">
+
+    <div class="drift-zone"></div>
+
+    <div class="records-header">
+      <div class="records-rule"></div>
+      <span class="records-label">manifestation records</span>
+    </div>
+
+    <!-- Guruneko.png — wide, centered -->
+    <div class="image-record">
+      <a class="image-card" data-name="Guruneko" style="max-width: 620px; width: 62vw;">
+        <img src="../images/Guruneko.png" alt="Guruneko" loading="lazy">
+      </a>
+      <p class="image-filename">Guruneko</p>
+    </div>
+
+    <!-- Hush.PNG — narrower, right-aligned -->
+    <div class="image-record">
+      <a class="image-card" data-name="Hush" style="max-width: 420px; width: 40vw;">
+        <img src="../images/Hush.PNG" alt="Hush" loading="lazy">
+      </a>
+      <p class="image-filename">Hush</p>
+    </div>
+
+    <!-- Vessel.png — wide, left-aligned -->
+    <div class="image-record">
+      <a class="image-card" data-name="Vessel" style="max-width: 680px; width: 66vw;">
+        <img src="../images/Vessel.png" alt="Vessel" loading="lazy">
+      </a>
+      <p class="image-filename">Vessel</p>
+    </div>
+
+    <!-- Zyrko logo.png — medium, centered -->
+    <div class="image-record">
+      <a class="image-card" data-name="Zyrko logo" style="max-width: 360px; width: 34vw;">
+        <img src="../images/Zyrko%20logo.png" alt="Zyrko logo" loading="lazy">
+      </a>
+      <p class="image-filename">Zyrko logo</p>
+    </div>
+
+    <!-- Zyro.png — medium-wide, centered -->
+    <div class="image-record">
+      <a class="image-card" data-name="Zyro" style="max-width: 520px; width: 50vw;">
+        <img src="../images/Zyro.png" alt="Zyro" loading="lazy">
+      </a>
+      <p class="image-filename">Zyro</p>
+    </div>
+
+    <div style="height: 20vh;"></div>
+
   </div>
 
-  <!-- void-structure: always present, slow wide drift -->
-  <div class="doc-entry" id="e-void">
-    <span class="doc-label">VOID</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">void-structure</p>
-    <p class="doc-text">
-      present without content<br>
-      structure held without purpose<br>
-      not potential. not placeholder.
-    </p>
+  <!-- ── observation view ─────────────────────────────────────── -->
+
+  <div id="obs-view">
+    <img id="obs-img" src="" alt="">
+    <p id="obs-name"></p>
+    <button id="obs-close">close</button>
   </div>
 
-  <!-- phase-record: text becomes unreadable on cursor approach -->
-  <div class="doc-entry" id="e-phase">
-    <span class="doc-label">CORE</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">phase-record</p>
-    <p class="doc-text" id="e-phase-text">
-      observational stability<br>
-      phase.low · phase.mid · phase.high<br>
-      not progress. position.
-    </p>
-  </div>
-
-  <!-- manifestation-log: appears after 28s of observation, reveals on cursor -->
-  <div class="doc-entry" id="e-manifest">
-    <span class="doc-label">CORE</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">manifestation-log</p>
-    <p class="doc-text">
-      six conditions.<br>
-      when all hold, crossing occurs.<br>
-      not a decision. a structural consequence.
-    </p>
-  </div>
-
-  <!-- hush-boundary: appears after 50s, hides on cursor -->
-  <div class="doc-entry" id="e-hush">
-    <span class="doc-label">HUSH</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">hush-boundary</p>
-    <p class="doc-text">
-      it holds what does not<br>
-      need to surface<br>
-      the boundary reduces
-    </p>
-  </div>
-
-  <!-- forbidden-register: appears after 20s, text obscures on cursor -->
-  <div class="doc-entry" id="e-forbidden">
-    <span class="doc-label">CORE</span>
-    <div class="doc-rule"></div>
-    <p class="doc-title">forbidden-register</p>
-    <p class="doc-text" id="e-forbidden-text">
-      twenty-two prohibitions<br>
-      across four categories<br>
-      structure defined by refusal
-    </p>
-  </div>
-
-  <p class="field-id">Archive</p>
-  <p class="observation-counter" id="obs-counter">00:00</p>
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
 
   <script>
   (() => {
     'use strict';
 
-    // ── state ──────────────────────────────────────────────────────────────
-    let mouseX = window.innerWidth  / 2;
-    let mouseY = window.innerHeight / 2;
-    const startTime = Date.now();
-    let lastRearrange = startTime;
+    // ── elements ──────────────────────────────────────────────────
+    const driftField   = document.getElementById('drift-field');
+    const dot          = document.getElementById('cursor-dot');
+    const counterEl    = document.getElementById('obs-counter');
+    const scrollPrompt = document.getElementById('scroll-prompt');
+    const obsView      = document.getElementById('obs-view');
+    const obsImg       = document.getElementById('obs-img');
+    const obsName      = document.getElementById('obs-name');
+    const obsClose     = document.getElementById('obs-close');
 
-    // ── entry definitions ──────────────────────────────────────────────────
-    // pos: fraction of half-viewport from center (-1 to 1 range, typically -0.6 to 0.6)
-    // freq: oscillation frequency (rad/ms)
-    // amp: oscillation amplitude in px
-    // mode: 'normal' | 'hides' | 'reveals' | 'obscures'
-    //   hides   — entry fades OUT as cursor approaches
-    //   reveals — entry fades IN as cursor approaches (used for delayed entries)
-    //   obscures— doc-text loses contrast as cursor approaches; label/title stay
-    // delay: ms before entry becomes active (0 = always active)
+    // ── state ─────────────────────────────────────────────────────
+    let mouseX    = window.innerWidth  / 2;
+    let mouseY    = window.innerHeight / 2;
+    const t0      = Date.now();
+    let lastRearrange = t0;
 
+    // ── entry definitions ─────────────────────────────────────────
     const DEFS = [
-      {
-        id: 'e-topology',
-        pos:  { x: -0.36, y: -0.28 },
-        freq: { x: 2.5e-4, y: 2.0e-4 },
-        phase:{ x: 0.0,   y: 1.1   },
-        amp: 18,
-        mode: 'normal',
-        baseOp: 0.62,
-        delay: 0,
-      },
-      {
-        id: 'e-observer',
-        pos:  { x:  0.40, y:  0.04 },
-        freq: { x: 3.0e-4, y: 2.2e-4 },
-        phase:{ x: 2.3,   y: 0.7   },
-        amp: 16,
-        mode: 'hides',
-        baseOp: 0.52,
-        delay: 0,
-      },
-      {
-        id: 'e-void',
-        pos:  { x: -0.40, y:  0.34 },
-        freq: { x: 1.8e-4, y: 2.8e-4 },
-        phase:{ x: 1.5,   y: 3.2   },
-        amp: 22,
-        mode: 'normal',
-        baseOp: 0.48,
-        delay: 0,
-      },
-      {
-        id: 'e-phase',
-        pos:  { x:  0.42, y: -0.36 },
-        freq: { x: 2.8e-4, y: 2.0e-4 },
-        phase:{ x: 0.8,   y: 2.0   },
-        amp: 14,
-        mode: 'obscures',
-        baseOp: 0.44,
-        delay: 0,
-      },
-      {
-        id: 'e-manifest',
-        pos:  { x:  0.10, y:  0.40 },
-        freq: { x: 2.2e-4, y: 1.5e-4 },
-        phase:{ x: 4.1,   y: 1.8   },
-        amp: 13,
-        mode: 'reveals',
-        baseOp: 0.07,
-        activeOp: 0.50,
-        delay: 28000,
-      },
-      {
-        id: 'e-hush',
-        pos:  { x: -0.44, y: -0.36 },
-        freq: { x: 2.0e-4, y: 2.5e-4 },
-        phase:{ x: 3.6,   y: 0.3   },
-        amp: 24,
-        mode: 'hides',
-        baseOp: 0.32,
-        delay: 50000,
-      },
-      {
-        id: 'e-forbidden',
-        pos:  { x:  0.06, y: -0.44 },
-        freq: { x: 1.5e-4, y: 3.0e-4 },
-        phase:{ x: 2.7,   y: 4.5   },
-        amp: 12,
-        mode: 'obscures',
-        baseOp: 0.38,
-        delay: 20000,
-      },
+      { id:'e-topology',  pos:{x:-0.36,y:-0.28}, freq:{x:2.5e-4,y:2.0e-4}, phase:{x:0.0,y:1.1},  amp:18, mode:'normal',   baseOp:0.62, delay:0      },
+      { id:'e-observer',  pos:{x: 0.40,y: 0.04}, freq:{x:3.0e-4,y:2.2e-4}, phase:{x:2.3,y:0.7},  amp:16, mode:'hides',    baseOp:0.52, delay:0      },
+      { id:'e-void',      pos:{x:-0.40,y: 0.34}, freq:{x:1.8e-4,y:2.8e-4}, phase:{x:1.5,y:3.2},  amp:22, mode:'normal',   baseOp:0.48, delay:0      },
+      { id:'e-phase',     pos:{x: 0.42,y:-0.36}, freq:{x:2.8e-4,y:2.0e-4}, phase:{x:0.8,y:2.0},  amp:14, mode:'obscures', baseOp:0.44, delay:0      },
+      { id:'e-manifest',  pos:{x: 0.10,y: 0.40}, freq:{x:2.2e-4,y:1.5e-4}, phase:{x:4.1,y:1.8},  amp:13, mode:'reveals',  baseOp:0.06, activeOp:0.50, delay:28000 },
+      { id:'e-hush',      pos:{x:-0.44,y:-0.36}, freq:{x:2.0e-4,y:2.5e-4}, phase:{x:3.6,y:0.3},  amp:24, mode:'hides',    baseOp:0.32, delay:50000  },
+      { id:'e-forbidden', pos:{x: 0.06,y:-0.44}, freq:{x:1.5e-4,y:3.0e-4}, phase:{x:2.7,y:4.5},  amp:12, mode:'obscures', baseOp:0.38, delay:20000  },
     ];
 
-    // ── entry runtime state ────────────────────────────────────────────────
     const entries = DEFS.map(d => ({
       ...d,
-      el:       document.getElementById(d.id),
-      // current base position (lerps toward target on rearrange)
-      baseX:    d.pos.x,
-      baseY:    d.pos.y,
-      // rearrange target
-      targetX:  d.pos.x,
-      targetY:  d.pos.y,
-      // runtime
-      active:   d.delay === 0,
+      el:        document.getElementById(d.id),
+      baseX:     d.pos.x, baseY: d.pos.y,
+      targetX:   d.pos.x, targetY: d.pos.y,
+      active:    d.delay === 0,
       currentOp: d.delay === 0 ? d.baseOp : 0,
     }));
 
-    // hide delayed entries immediately
-    entries.forEach(e => {
-      if (!e.active) e.el.style.opacity = '0';
-    });
-
-    // activate delayed entries
+    entries.filter(e => !e.active).forEach(e => { e.el.style.opacity = '0'; });
     entries.filter(e => e.delay > 0).forEach(e => {
       setTimeout(() => { e.active = true; }, e.delay);
     });
 
-    // ── rearrangement ─────────────────────────────────────────────────────
-    // Every REARRANGE_INTERVAL ms, assign new base position targets.
-    // Entries lerp toward them very slowly — movement is barely perceptible
-    // moment-to-moment but clearly different across minutes.
-    const REARRANGE_INTERVAL = 110000; // ~1m50s
+    // ── scroll-prompt reveal after 8s ─────────────────────────────
+    setTimeout(() => { scrollPrompt.style.opacity = '0.35'; }, 8000);
 
+    // ── rearrangement ─────────────────────────────────────────────
+    const REARRANGE_MS = 110000;
     function rearrange() {
       entries.forEach(e => {
-        // Keep within a reasonable field
-        const spread = 0.55;
-        e.targetX = (Math.random() * 2 - 1) * spread;
-        e.targetY = (Math.random() * 2 - 1) * spread;
+        e.targetX = (Math.random() * 2 - 1) * 0.55;
+        e.targetY = (Math.random() * 2 - 1) * 0.55;
       });
     }
+    setInterval(rearrange, REARRANGE_MS);
 
-    setInterval(rearrange, REARRANGE_INTERVAL);
+    // ── helpers ───────────────────────────────────────────────────
+    const lerp = (a, b, t) => a + (b - a) * t;
+    const grey = v => { const h = Math.round(v).toString(16).padStart(2,'0'); return `#${h}${h}${h}`; };
 
-    // ── helpers ───────────────────────────────────────────────────────────
-    function lerp(a, b, t) { return a + (b - a) * t; }
-
-    function entryCenter(el) {
-      const r = el.getBoundingClientRect();
-      return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
+    function proximity(el) {
+      const r  = el.getBoundingClientRect();
+      const cx = r.left + r.width  / 2;
+      const cy = r.top  + r.height / 2;
+      return Math.max(0, 1 - Math.hypot(mouseX - cx, mouseY - cy) / 200);
     }
 
-    function proximity(el, mx, my, radius) {
-      const c = entryCenter(el);
-      return Math.max(0, 1 - Math.hypot(mx - c.x, my - c.y) / radius);
-    }
+    // ── scroll handling ───────────────────────────────────────────
+    window.addEventListener('scroll', () => {
+      const p = Math.min(1, window.scrollY / (window.innerHeight * 0.55));
+      driftField.style.opacity = (1 - p).toFixed(3);
+      if (p > 0.05) scrollPrompt.style.opacity = '0';
+    }, { passive: true });
 
-    // interpolate between two hex grey values
-    function grey(v) {
-      const h = Math.round(v).toString(16).padStart(2, '0');
-      return `#${h}${h}${h}`;
-    }
-
-    // ── observation counter ───────────────────────────────────────────────
-    const counter = document.getElementById('obs-counter');
-    function updateCounter() {
-      const s = Math.floor((Date.now() - startTime) / 1000);
-      const mm = String(Math.floor(s / 60)).padStart(2, '0');
-      const ss = String(s % 60).padStart(2, '0');
-      counter.textContent = `${mm}:${ss}`;
-    }
-
-    // ── main loop ─────────────────────────────────────────────────────────
-    const LERP_BASE   = 0.0006; // how fast base position drifts toward target
-    const LERP_OPACITY = 0.035; // how fast opacity lerps
-
-    function loop(t) {
-      const vw2 = window.innerWidth  * 0.42; // half usable width
-      const vh2 = window.innerHeight * 0.42; // half usable height
-
+    // ── IntersectionObserver for image fade-in ────────────────────
+    const io = new IntersectionObserver(entries => {
       entries.forEach(e => {
-
-        // ── base position drift toward rearrange target ──
-        e.baseX = lerp(e.baseX, e.targetX, LERP_BASE);
-        e.baseY = lerp(e.baseY, e.targetY, LERP_BASE);
-
-        // ── oscillation around base ──
-        const ox = Math.sin(t * e.freq.x + e.phase.x) * e.amp;
-        const oy = Math.cos(t * e.freq.y + e.phase.y) * e.amp * 0.55;
-        const px = e.baseX * vw2 + ox;
-        const py = e.baseY * vh2 + oy;
-        e.el.style.transform =
-          `translate(calc(-50% + ${px.toFixed(2)}px), calc(-50% + ${py.toFixed(2)}px))`;
-
-        // ── opacity target from mode + proximity ──
-        const p = proximity(e.el, mouseX, mouseY, 200);
-        let targetOp;
-
-        if (!e.active) {
-          targetOp = 0;
-        } else {
-          const fullOp = e.activeOp ?? e.baseOp;
-          switch (e.mode) {
-            case 'hides':
-              targetOp = fullOp * (1 - p * 0.88);
-              break;
-            case 'reveals':
-              // starts near-invisible, pulls toward readable when cursor is close
-              targetOp = lerp(e.baseOp, fullOp, p);
-              break;
-            case 'obscures':
-              targetOp = fullOp; // entry stays; only text loses contrast
-              break;
-            default:
-              targetOp = fullOp;
-          }
-        }
-
-        e.currentOp = lerp(e.currentOp, targetOp, LERP_OPACITY);
-        e.el.style.opacity = e.currentOp.toFixed(4);
-
-        // ── text obscuring (for 'obscures' mode) ──
-        if (e.mode === 'obscures') {
-          // text color lerps from #585858 (text-mid) toward #0D0D0D (near-bg)
-          // as cursor approaches — text sinks into background without disappearing
-          const textEl = e.el.querySelector('.doc-text');
-          if (textEl) {
-            const v = Math.round(lerp(0x58, 0x0D, p));
-            textEl.style.color = grey(v);
-          }
-        }
+        if (e.isIntersecting) e.target.classList.add('visible');
       });
+    }, { threshold: 0.12 });
 
-      requestAnimationFrame(loop);
-    }
+    document.querySelectorAll('.image-record').forEach(el => io.observe(el));
 
-    // ── counter interval ──────────────────────────────────────────────────
-    setInterval(updateCounter, 1000);
-    updateCounter();
+    // ── observation view ──────────────────────────────────────────
+    document.querySelectorAll('.image-card').forEach(card => {
+      card.addEventListener('click', () => {
+        const img = card.querySelector('img');
+        obsImg.src = img.src;
+        obsName.textContent = card.dataset.name;
+        obsView.classList.add('open');
+      });
+    });
 
-    // ── mouse ─────────────────────────────────────────────────────────────
-    const dot = document.getElementById('cursor-dot');
+    function closeObs() { obsView.classList.remove('open'); }
+    obsClose.addEventListener('click', closeObs);
+    obsView.addEventListener('click', e => { if (e.target === obsView) closeObs(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeObs(); });
+
+    // ── observation counter ───────────────────────────────────────
+    setInterval(() => {
+      const s  = Math.floor((Date.now() - t0) / 1000);
+      const mm = String(Math.floor(s / 60)).padStart(2,'0');
+      const ss = String(s % 60).padStart(2,'0');
+      counterEl.textContent = `${mm}:${ss}`;
+    }, 1000);
+
+    // ── mouse ─────────────────────────────────────────────────────
     document.addEventListener('mousemove', e => {
       mouseX = e.clientX;
       mouseY = e.clientY;
@@ -427,7 +497,48 @@
       dot.style.top  = mouseY + 'px';
     });
 
-    // ── start ─────────────────────────────────────────────────────────────
+    // ── rAF loop (drift only) ─────────────────────────────────────
+    function loop(t) {
+      const vw2 = window.innerWidth  * 0.42;
+      const vh2 = window.innerHeight * 0.42;
+
+      entries.forEach(e => {
+        e.baseX = lerp(e.baseX, e.targetX, 6e-4);
+        e.baseY = lerp(e.baseY, e.targetY, 6e-4);
+
+        const ox = Math.sin(t * e.freq.x + e.phase.x) * e.amp;
+        const oy = Math.cos(t * e.freq.y + e.phase.y) * e.amp * 0.55;
+        const px = e.baseX * vw2 + ox;
+        const py = e.baseY * vh2 + oy;
+        e.el.style.transform =
+          `translate(calc(-50% + ${px.toFixed(2)}px), calc(-50% + ${py.toFixed(2)}px))`;
+
+        const p = proximity(e.el);
+        const fullOp = e.activeOp ?? e.baseOp;
+        let targetOp;
+        if (!e.active) {
+          targetOp = 0;
+        } else {
+          switch (e.mode) {
+            case 'hides':    targetOp = fullOp * (1 - p * 0.88); break;
+            case 'reveals':  targetOp = lerp(e.baseOp, fullOp, p); break;
+            case 'obscures': targetOp = fullOp; break;
+            default:         targetOp = fullOp;
+          }
+        }
+
+        e.currentOp = lerp(e.currentOp, targetOp, 0.035);
+        e.el.style.opacity = e.currentOp.toFixed(4);
+
+        if (e.mode === 'obscures') {
+          const textEl = e.el.querySelector('.doc-text');
+          if (textEl) textEl.style.color = grey(lerp(0x58, 0x0D, p));
+        }
+      });
+
+      requestAnimationFrame(loop);
+    }
+
     requestAnimationFrame(loop);
 
   })();
