@@ -6,59 +6,43 @@
   <title>Zyrko — Hush</title>
   <link rel="stylesheet" href="../style.css">
   <style>
-    body.page {
-      justify-content: center;
-      overflow: hidden;
-      height: 100%;
-    }
-    #hush-ring {
+    html, body { overflow: hidden; height: 100%; }
+
+    #apparition {
       position: fixed;
       top: 50%;
       left: 50%;
-      width: 320px;
-      height: 320px;
-      border-radius: 50%;
-      border: 1px solid rgba(255,255,255,0.012);
-      transform: translate(-50%, -50%);
+      width: 58vw;
+      max-width: 560px;
       pointer-events: none;
-      transition: border-color 1.2s ease;
-      z-index: 1;
+      user-select: none;
+      /* transform set entirely by JS */
     }
-    .hush-center {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.6rem;
+
+    #apparition img {
+      width: 100%;
+      display: block;
+      filter: grayscale(100%) blur(18px);
+      opacity: 0.05;
     }
-    .hush-primary {
-      font-size: 0.82rem;
-      font-weight: 300;
-      color: var(--text-surface);
-      letter-spacing: 0.05em;
-      line-height: 1.9;
-      opacity: 0.55;
-    }
-    .hush-secondary {
-      font-size: 0.72rem;
-      font-weight: 300;
-      color: var(--text-mid);
-      letter-spacing: 0.04em;
-      line-height: 2;
-      opacity: 0.08;
-      transition: opacity 1s ease;
-    }
-    .hush-rule {
-      width: 22px;
-      height: 1px;
-      background: var(--secondary);
-      opacity: 0.5;
+
+    .hush-line {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.52rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      text-indent: 0.26em;
+      color: var(--text-dim);
+      opacity: 0.28;
+      pointer-events: none;
+      white-space: nowrap;
     }
   </style>
 </head>
-<body class="page">
+<body>
 
   <nav>
     <a href="../" class="nav-home">ZYRO</a>
@@ -68,44 +52,70 @@
     <a href="../product/">PRODUCT</a>
   </nav>
 
-  <div id="hush-ring"></div>
-
-  <div class="hush-center">
-    <p class="page-heading" style="margin-bottom:0;">Hush</p>
-    <div class="hush-rule"></div>
-    <p class="hush-primary">
-      it holds what does not need to surface
-    </p>
-    <p class="hush-secondary" id="hush-s1">
-      not silence enforced by absence<br>
-      silence chosen in the presence of everything
-    </p>
-    <p class="hush-secondary" id="hush-s2">
-      the boundary reduces<br>
-      what remains has earned its crossing
-    </p>
+  <div id="apparition">
+    <img src="../images/Hush.PNG" alt="" draggable="false">
   </div>
 
+  <p class="hush-line">before the threshold</p>
+
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+
   <script>
-    const dot    = document.getElementById('cursor-dot');
-    const ring   = document.getElementById('hush-ring');
-    const texts  = document.querySelectorAll('.hush-secondary');
-    const cx     = () => window.innerWidth  / 2;
-    const cy     = () => window.innerHeight / 2;
+    (() => {
+      'use strict';
 
-    document.addEventListener('mousemove', e => {
-      dot.style.left = e.clientX + 'px';
-      dot.style.top  = e.clientY + 'px';
+      const dot  = document.getElementById('cursor-dot');
+      const wrap = document.getElementById('apparition');
+      const img  = wrap.querySelector('img');
 
-      const dist = Math.hypot(e.clientX - cx(), e.clientY - cy());
-      const p    = Math.max(0, 1 - dist / 260);
+      let mouseX = window.innerWidth  / 2;
+      let mouseY = window.innerHeight / 2;
 
-      ring.style.borderColor = `rgba(255,255,255,${(0.012 + p * 0.055).toFixed(4)})`;
-      texts.forEach(t => {
-        t.style.opacity = (0.08 + p * 0.42).toFixed(3);
+      // lerped display values
+      let smoothOp   = 0.05;
+      let smoothBlur = 18;
+
+      // drift clock — independent x/y frequencies so path never repeats exactly
+      let t = 0;
+
+      document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        dot.style.left = mouseX + 'px';
+        dot.style.top  = mouseY + 'px';
       });
-    });
+
+      function loop() {
+        t += 0.0018;
+
+        // compound sinusoidal drift — small amplitude, never still
+        const dx = Math.sin(t * 0.71) * 11 + Math.sin(t * 1.37) * 5;
+        const dy = Math.cos(t * 0.53) * 8  + Math.cos(t * 1.09) * 4;
+
+        wrap.style.transform =
+          `translate(calc(-50% + ${dx.toFixed(2)}px), calc(-50% + ${dy.toFixed(2)}px))`;
+
+        // proximity to viewport center (image drifts only ±15 px, approximation is fine)
+        const cx   = window.innerWidth  / 2;
+        const cy   = window.innerHeight / 2;
+        const dist = Math.hypot(mouseX - cx, mouseY - cy);
+        const p    = Math.max(0, 1 - dist / 420);
+
+        // never fully resolves: opacity cap 0.42, blur floor 5 px
+        const targetOp   = 0.05 + p * 0.37;
+        const targetBlur = 18   - p * 13;
+
+        smoothOp   += (targetOp   - smoothOp)   * 0.038;
+        smoothBlur += (targetBlur - smoothBlur)  * 0.038;
+
+        img.style.opacity = smoothOp.toFixed(4);
+        img.style.filter  = `grayscale(100%) blur(${smoothBlur.toFixed(2)}px)`;
+
+        requestAnimationFrame(loop);
+      }
+
+      loop();
+    })();
   </script>
 </body>
 </html>
