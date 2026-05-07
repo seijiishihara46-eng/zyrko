@@ -16,8 +16,7 @@
 
 html, body {
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 body {
@@ -66,6 +65,141 @@ nav {
 .nav-label:hover,
 .nav-label.active {
   color: var(--text-mid);
+}
+
+nav a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.57rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  text-indent: 0.22em;
+  transition: color 0.6s ease;
+  font-weight: 300;
+}
+
+nav a:hover,
+nav a.current {
+  color: var(--text-mid);
+}
+
+nav a.nav-home {
+  color: var(--text-mid);
+  margin-right: 0.6rem;
+}
+
+/* ── sub-page layout ── */
+
+body.page {
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 7rem 2rem 5rem;
+}
+
+.page-wrap {
+  width: 100%;
+  max-width: 560px;
+}
+
+.page-heading {
+  font-size: 0.53rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-indent: 0.28em;
+  margin-bottom: 3.5rem;
+}
+
+.page-line {
+  font-size: 0.82rem;
+  font-weight: 300;
+  color: var(--text-surface);
+  line-height: 1.95;
+  letter-spacing: 0.03em;
+}
+
+.page-line.dim {
+  color: var(--text-mid);
+  font-size: 0.76rem;
+}
+
+.page-line.faint {
+  color: var(--text-dim);
+  font-size: 0.76rem;
+  transition: opacity 0.9s ease;
+}
+
+.page-rule {
+  width: 100%;
+  height: 1px;
+  background: var(--secondary);
+  margin: 2.5rem 0;
+  border: none;
+}
+
+.page-rule.short {
+  width: 28px;
+  margin: 2rem 0;
+}
+
+.log-entry {
+  display: grid;
+  grid-template-columns: 9rem 1fr;
+  gap: 0 2rem;
+  margin-bottom: 1.1rem;
+  align-items: baseline;
+}
+
+.log-date {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.log-title {
+  font-size: 0.76rem;
+  color: var(--text-mid);
+  font-weight: 300;
+  letter-spacing: 0.03em;
+}
+
+.log-desc {
+  grid-column: 2;
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  margin-top: 0.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.component-row {
+  display: grid;
+  grid-template-columns: 7rem 1fr;
+  gap: 0 2rem;
+  margin-bottom: 1.2rem;
+  align-items: baseline;
+}
+
+.component-name {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-indent: 0.18em;
+}
+
+.component-desc {
+  font-size: 0.76rem;
+  font-weight: 300;
+  color: var(--text-dim);
+  letter-spacing: 0.03em;
+  line-height: 1.7;
 }
 
 /* ── scene elements ── */

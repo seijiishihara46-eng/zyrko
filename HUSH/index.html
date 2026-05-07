@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyrko — Hush</title>
+  <link rel="stylesheet" href="../style.css">
+  <style>
+    body.page {
+      justify-content: center;
+      overflow: hidden;
+      height: 100%;
+    }
+    #hush-ring {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.012);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      transition: border-color 1.2s ease;
+      z-index: 1;
+    }
+    .hush-center {
+      position: relative;
+      z-index: 10;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.6rem;
+    }
+    .hush-primary {
+      font-size: 0.82rem;
+      font-weight: 300;
+      color: var(--text-surface);
+      letter-spacing: 0.05em;
+      line-height: 1.9;
+      opacity: 0.55;
+    }
+    .hush-secondary {
+      font-size: 0.72rem;
+      font-weight: 300;
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+      line-height: 2;
+      opacity: 0.08;
+      transition: opacity 1s ease;
+    }
+    .hush-rule {
+      width: 22px;
+      height: 1px;
+      background: var(--secondary);
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body class="page">
+
+  <nav>
+    <a href="../" class="nav-home">ZYRO</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../hush/" class="current">HUSH</a>
+    <a href="../archive/">ARCHIVE</a>
+    <a href="../product/">PRODUCT</a>
+  </nav>
+
+  <div id="hush-ring"></div>
+
+  <div class="hush-center">
+    <p class="page-heading" style="margin-bottom:0;">Hush</p>
+    <div class="hush-rule"></div>
+    <p class="hush-primary">
+      it holds what does not need to surface
+    </p>
+    <p class="hush-secondary" id="hush-s1">
+      not silence enforced by absence<br>
+      silence chosen in the presence of everything
+    </p>
+    <p class="hush-secondary" id="hush-s2">
+      the boundary reduces<br>
+      what remains has earned its crossing
+    </p>
+  </div>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <script>
+    const dot    = document.getElementById('cursor-dot');
+    const ring   = document.getElementById('hush-ring');
+    const texts  = document.querySelectorAll('.hush-secondary');
+    const cx     = () => window.innerWidth  / 2;
+    const cy     = () => window.innerHeight / 2;
+
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+
+      const dist = Math.hypot(e.clientX - cx(), e.clientY - cy());
+      const p    = Math.max(0, 1 - dist / 260);
+
+      ring.style.borderColor = `rgba(255,255,255,${(0.012 + p * 0.055).toFixed(4)})`;
+      texts.forEach(t => {
+        t.style.opacity = (0.08 + p * 0.42).toFixed(3);
+      });
+    });
+  </script>
+</body>
+</html>
