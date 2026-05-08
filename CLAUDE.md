@@ -14,9 +14,9 @@ Say what is. Leave the rest.
 
 ## Folders
 
-Each directory has a single function. Treat them as distinct.
+Each component has a single function. Treat them as distinct.
 
-| Directory  | Purpose                              |
+| Component  | Purpose                              |
 |------------|--------------------------------------|
 | `CORE`     | Rules, logic, constraints            |
 | `HUSH`     | Background, quiet, internal          |
@@ -25,6 +25,8 @@ Each directory has a single function. Treat them as distinct.
 | `PROMPTS`  | Language, inputs, pattern libraries  |
 | `WEBSITE`  | Public output, surface layer         |
 | `PRODUCTS` | Deliverables, what is released       |
+
+`WEBSITE` is implemented at the repository root, not as a subfolder.
 
 ---
 

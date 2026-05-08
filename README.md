@@ -13,9 +13,10 @@ Zyrko/
 ├── VOID/        — empty space held intentionally
 ├── ZYRO/        — the identity layer
 ├── PROMPTS/     — language patterns and inputs
-├── WEBSITE/     — public-facing surface
 └── PRODUCTS/    — what ships
 ```
+
+`WEBSITE` — public-facing surface — implemented at the repository root.
 
 ---
 
