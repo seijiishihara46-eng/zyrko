@@ -57,3 +57,75 @@ Each directory has a single function. Treat them as distinct.
 ## Working Model
 
 `claude-sonnet-4-6`
+
+---
+
+## Zyrko Core
+
+Zyrko is not a character franchise.
+Zyrko is a structure system.
+
+Existence emerges from:
+- ambivalence
+- convergence
+- phase interaction
+- perception
+
+Meaning should not be directly explained.
+Meaning appears through observation.
+
+The project should feel:
+- quiet
+- minimal
+- slightly incorrect
+- emotionally unresolved
+
+Avoid:
+- obvious fantasy
+- direct symbolism
+- emotional overexpression
+- conventional mascot behavior
+- excessive lore explanation
+
+---
+
+## Hush Principles
+
+Hush is not a protagonist.
+Hush is an observing phenomenon.
+
+Hush may appear:
+- divine
+- mechanical
+- emotional
+- empty
+- alive
+- artificial
+
+without becoming any single interpretation.
+
+Rules:
+- fixed Zyro symbol
+- spherical head
+- minimal surface detail
+- no expressive face
+- ambiguity preserved
+
+---
+
+## Void Principles
+
+Void is not darkness.
+Void is not a portal.
+
+Void is:
+- depth
+- absence
+- attraction
+- unresolved center
+
+Visual rules:
+- perfect black
+- no texture
+- no glow
+- no visible edge noise
