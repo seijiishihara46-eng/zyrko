@@ -69,14 +69,12 @@ target_w = 2.0
 s = target_w / width if width else 1.0
 glyph.scale = (s, s, s)
 bpy.ops.object.transform_apply(scale=True, location=False, rotation=False)
-
-# flip so it faces up the Z axis nicely (SVG y-down -> mirror Y)
-glyph.scale.y *= -1
-bpy.ops.object.transform_apply(scale=True)
+# NOTE: Blender's SVG importer already flips Y (image imports upright);
+# do NOT mirror Y again or the glyph ends up upside-down.
 bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS")
 glyph.location = (0, 0, 0)
 
-# fix normals (the negative-Y scale flipped them) before extruding
+# ensure consistent outward normals before extruding
 bpy.ops.object.mode_set(mode="EDIT")
 bpy.ops.mesh.select_all(action="SELECT")
 bpy.ops.mesh.normals_make_consistent(inside=False)

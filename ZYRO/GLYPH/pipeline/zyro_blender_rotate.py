@@ -48,10 +48,10 @@ bb = [glyph.matrix_world @ Vector(c) for c in glyph.bound_box]
 width = max(v.x for v in bb) - min(v.x for v in bb)
 s = 2.0 / width if width else 1.0
 glyph.scale = (s, s, s); bpy.ops.object.transform_apply(scale=True)
-glyph.scale.y *= -1; bpy.ops.object.transform_apply(scale=True)
+# Blender's SVG importer already flips Y; do NOT mirror Y again (would be upside-down).
 bpy.ops.object.origin_set(type="ORIGIN_GEOMETRY", center="BOUNDS"); glyph.location = (0, 0, 0)
 
-# fix normals (negative scale flipped them)
+# ensure consistent outward normals
 bpy.ops.object.mode_set(mode="EDIT"); bpy.ops.mesh.select_all(action="SELECT")
 bpy.ops.mesh.normals_make_consistent(inside=False); bpy.ops.object.mode_set(mode="OBJECT")
 
