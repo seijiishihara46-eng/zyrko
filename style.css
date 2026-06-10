@@ -384,3 +384,15 @@ body.page {
   .component-name { margin-bottom: 0.25rem; }
 
 }
+
+/* ── Zyro glyph font (U+E000, canonical v2.5) ── */
+@font-face {
+  font-family: "Zyrko";
+  src: url("Zyrko.woff2") format("woff2"),
+       url("Zyrko.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+.zyro { font-family: "Zyrko", sans-serif; line-height: 1; }
+.zyro-mark::before { content: "\E000"; font-family: "Zyrko", sans-serif; line-height: 1; }
