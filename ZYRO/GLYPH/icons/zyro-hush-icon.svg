@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Zyro Hush Icon — head + witch hat + Zyro face.
+  Face placement spec: markWidth = 0.84 x headW, vertical center = 0.42 x headH
+  from head top, horizontally centered. On the black head the glyph's black
+  field merges; only the white Orbit (silver face) shows.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 460" width="400" height="460"
+     role="img" aria-label="Hush — Zyro face icon">
+
+  <!-- hat cone (tall, slender, slight witch bend) -->
+  <path fill="#0b0b0b" d="
+    M 160 198
+    C 164 116 182 52 226 38
+    C 236 60 244 120 252 198
+    Z" />
+  <!-- hat brim -->
+  <ellipse cx="200" cy="198" rx="158" ry="26" fill="#0b0b0b"/>
+
+  <!-- head -->
+  <ellipse cx="200" cy="306" rx="120" ry="130" fill="#0b0b0b"/>
+
+  <!-- Zyro face: white Orbit only. native 200x100.
+       headW=240 -> markW=0.84*240=202 -> scale 1.01.
+       headTop=176, headH=260, vCenter=176+0.42*260=285. -->
+  <g transform="translate(99,234.5) scale(1.01)">
+    <path fill="none" stroke="#ffffff" stroke-width="9"
+          stroke-linecap="round" stroke-linejoin="round"
+          d="M 47 51 C 52 48 55 52 54 57 C 52 65 41 68 34 62 C 24 54 27 39 38 33
+             C 53 24 70 34 72 50 C 74 68 59 80 43 80 C 23 80 12 66 12 49
+             C 12 30 27 16 46 16 C 65 16 79 28 93 42 C 96 45 98 48 100 50
+             C 115 34 132 16 153 16 C 173 16 187 31 187 50 C 187 69 173 84 153 84
+             C 133 84 116 66 100 50 C 97 53 94 56 91 59 C 82 68 75 75 66 79"/>
+  </g>
+</svg>
