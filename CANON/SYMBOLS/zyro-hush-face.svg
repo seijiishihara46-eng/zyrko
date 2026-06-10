@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Zyro Hush Face — placement study.
+  Head = black; on black the glyph's black field merges and only the white
+  Orbit shows (= the silver face mark in the 3D render).
+  Placement params (relative to head): markWidth = 0.86 * headW,
+  vertical center = 0.40 from head top (eye level).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="400" height="480"
+     role="img" aria-label="Zyro Hush face placement">
+  <!-- head (black sphere approximation) -->
+  <ellipse cx="200" cy="235" rx="150" ry="165" fill="#0a0a0a"/>
+
+  <!-- Zyro glyph face: white Orbit only (black field redundant on black head).
+       PLACEMENT SPEC (relative to head): markWidth = 0.84 * headW,
+       vertical center = 0.42 from head top (eye level), horizontally centered.
+       native 200x100. scale 1.38 -> 276x138. group center at (200, 207). -->
+  <g transform="translate(62,138) scale(1.38)">
+    <path fill="none" stroke="#ffffff" stroke-width="9"
+          stroke-linecap="round" stroke-linejoin="round"
+          d="M 47 51 C 52 48 55 52 54 57 C 52 65 41 68 34 62 C 24 54 27 39 38 33
+             C 53 24 70 34 72 50 C 74 68 59 80 43 80 C 23 80 12 66 12 49
+             C 12 30 27 16 46 16 C 65 16 79 28 93 42 C 96 45 98 48 100 50
+             C 115 34 132 16 153 16 C 173 16 187 31 187 50 C 187 69 173 84 153 84
+             C 133 84 116 66 100 50 C 97 53 94 56 91 59 C 82 68 75 75 66 79"/>
+  </g>
+</svg>
