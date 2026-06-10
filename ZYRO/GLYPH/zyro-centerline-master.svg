@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+  viewBox="0 0 200 100"
+  width="200"
+  height="100"
+  data-zyro-canonical="true"
+  data-frozen="2026-06-10"
+  data-source="zyro_glyph_canonical.svg (v2.5)"
+  role="img"
+  aria-labelledby="title desc">
+  <title id="title">Zyro Centerline Master (canonical v2.5)</title>
+  <desc id="desc">Centerline master for the frozen v2.5 glyph: one black infinity field plus one continuous white Orbit centerline. Outline = field fill + Orbit stroked at the white-channel width.</desc>
+
+  <metadata id="zyro-master-parameters"><![CDATA[
+{
+  "name": "Zyro Centerline Master",
+  "version": "2.5-canonical",
+  "frozen": "2026-06-10",
+  "model": "black-field + single white Orbit centerline (NOT the 10:25:10 ribbon)",
+  "supersedes": "zyro_master.svg (v3 ribbon, 10:25:10) — kept as historical",
+  "units": "viewBox units",
+  "viewBox": [0, 0, 200, 100],
+  "glyphBounds": { "x": 5, "y": 7, "width": 190, "height": 86 },
+  "topology": {
+    "trajectoryCount": 1,
+    "centerlineType": "open",
+    "selfCrossings": 1,
+    "start": "left-spiral-eye",
+    "end": "lower-left-interior",
+    "crossing": "single convergence node"
+  },
+  "channelSystem": {
+    "model": "single white channel carved by the Orbit centerline",
+    "whiteChannelWidth": 9,
+    "blackField": "independent fill (left lobe + right Void chamber)",
+    "innerBlackBorder": "none (white Orbit sits directly on the black field)"
+  },
+  "orbit": { "leftSpiralCenter": [43, 50], "turns": 1.1, "direction": "eye-outward-to-convergence" },
+  "convergence": { "x": 100, "y": 50, "type": "single self-crossing" },
+  "void": { "center": [150, 50], "referenceRadiusX": 40, "referenceRadiusY": 33, "fill": "#000000" },
+  "scaling": { "to1000UPM": "x5 (master 1000 x 500)" },
+  "export": {
+    "masterGeometry": "live centerline offset (Orbit stroked at 9) over black field",
+    "manufacturingStep": "stroke-to-path the Orbit (9), union at crossing, subtract from black field -> one compound path, Orbit as counters",
+    "editPolicy": "edit only zyro-orbit-centerline and zyro-black-field"
+  }
+}
+  ]]></metadata>
+
+  <defs id="geometry-definitions">
+    <!-- The single continuous Orbit trajectory (the spine / white-channel centerline) -->
+    <path id="zyro-orbit-centerline"
+          pathLength="1000"
+          d="
+            M 47 51
+            C 52 48 55 52 54 57
+            C 52 65 41 68 34 62
+            C 24 54 27 39 38 33
+            C 53 24 70 34 72 50
+            C 74 68 59 80 43 80
+            C 23 80 12 66 12 49
+            C 12 30 27 16 46 16
+            C 65 16 79 28 93 42
+            C 96 45 98 48 100 50
+            C 115 34 132 16 153 16
+            C 173 16 187 31 187 50
+            C 187 69 173 84 153 84
+            C 133 84 116 66 100 50
+            C 97 53 94 56 91 59
+            C 82 68 75 75 66 79" />
+
+    <!-- The black infinity field (body): left lobe + right Void chamber -->
+    <path id="zyro-black-field"
+          d="
+            M 100 35
+            C 84 22 67 9 45 8
+            C 20 7 5 25 5 50
+            C 5 76 23 93 49 93
+            C 70 93 85 81 100 67
+            C 115 81 131 93 153 93
+            C 178 93 195 75 195 50
+            C 195 25 178 7 153 7
+            C 131 7 115 20 100 33
+            C 99 34 99 34 100 35
+            Z" />
+  </defs>
+
+  <!-- 03 Construction Guides -->
+  <g id="construction-guide-layer"
+     inkscape:groupmode="layer"
+     inkscape:label="03 Construction Guides"
+     display="none"
+     fill="none"
+     stroke="#888888"
+     stroke-width="0.5">
+    <rect id="glyph-bounds-guide" x="5" y="7" width="190" height="86" />
+    <line id="horizontal-axis-guide" x1="5" y1="50" x2="195" y2="50" />
+    <line id="convergence-axis-guide" x1="100" y1="7" x2="100" y2="93" />
+    <ellipse id="orbit-envelope-guide" cx="43" cy="50" rx="38" ry="34" />
+    <ellipse id="void-envelope-guide" cx="150" cy="50" rx="40" ry="33" />
+    <circle id="convergence-node-guide" cx="100" cy="50" r="2" stroke="#cc3333" />
+    <circle id="orbit-start-guide" cx="47" cy="51" r="2" stroke="#3366cc" />
+    <circle id="orbit-end-guide" cx="66" cy="79" r="2" stroke="#33aa33" />
+  </g>
+
+  <!-- 02 Centerline (spine) -->
+  <g id="centerline-layer"
+     inkscape:groupmode="layer"
+     inkscape:label="02 Centerline"
+     display="none"
+     fill="none"
+     stroke="#000000"
+     stroke-width="0.6"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+    <use id="centerline-edit-reference" href="#zyro-orbit-centerline" />
+  </g>
+
+  <!-- 01 Outline = canonical rendered glyph (field fill + Orbit stroked at white-channel width) -->
+  <g id="outline-layer"
+     inkscape:groupmode="layer"
+     inkscape:label="01 Live Offset Outline"
+     data-derived-from="zyro-orbit-centerline"
+     data-white-channel="9">
+    <use id="black-field-fill" href="#zyro-black-field" fill="#000000" stroke="none" />
+    <use id="white-channel-offset"
+         href="#zyro-orbit-centerline"
+         fill="none"
+         stroke="#ffffff"
+         stroke-width="9"
+         stroke-linecap="round"
+         stroke-linejoin="round" />
+  </g>
+</svg>

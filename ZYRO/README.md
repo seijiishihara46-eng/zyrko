@@ -31,4 +31,5 @@ The identity layer. What Zyrko is.
 
 ## Contents
 
-_Nothing yet._
+- `GLYPH/` — the Zyro glyph: frozen canonical mark, centerline master,
+  icons, and the reproducible font build (U+E000). Published font in `CANON/SYMBOLS/`.

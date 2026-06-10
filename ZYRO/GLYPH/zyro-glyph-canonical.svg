@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ============================================================
+  ZYRO GLYPH — CANONICAL (FROZEN)
+  ============================================================
+  Frozen: 2026-06-10
+  Source: zyro_glyph_v2_5.svg (adopted as the mother shape)
+  Status: Phase 0 complete (Design Freeze). DO NOT redesign this silhouette.
+  This file is the single parent. All derivatives (Metal / Print /
+  Icon / Font / 3D) descend from here. Do not parent on raster images.
+
+  Structure:
+    - black-infinity-field : one black fill (left lobe + right Void chamber)
+    - white-orbit          : one continuous stroke (figure-eight with
+                             restrained left spiral, single self-crossing)
+  Canvas: viewBox 0 0 200 100, 2:1, transparent background, binary B/W only.
+  For font use see zyro_glyph_canonical_font_ready.svg and the roadmap.
+  ============================================================
+-->
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 200 100"
+     width="200"
+     height="100"
+     data-zyro-canonical="true"
+     data-frozen="2026-06-10"
+     data-source="zyro_glyph_v2_5.svg"
+     role="img"
+     aria-labelledby="title desc">
+  <title id="title">Zyro Glyph (Canonical)</title>
+  <desc id="desc">Canonical frozen Zyro glyph: one black infinity field crossed by one continuous white Orbit with a restrained left spiral.</desc>
+
+  <path id="black-infinity-field"
+        fill="#000000"
+        d="
+          M 100 35
+          C 84 22 67 9 45 8
+          C 20 7 5 25 5 50
+          C 5 76 23 93 49 93
+          C 70 93 85 81 100 67
+          C 115 81 131 93 153 93
+          C 178 93 195 75 195 50
+          C 195 25 178 7 153 7
+          C 131 7 115 20 100 33
+          C 99 34 99 34 100 35
+          Z" />
+
+  <path id="white-orbit"
+        fill="none"
+        stroke="#ffffff"
+        stroke-width="9"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="
+          M 47 51
+          C 52 48 55 52 54 57
+          C 52 65 41 68 34 62
+          C 24 54 27 39 38 33
+          C 53 24 70 34 72 50
+          C 74 68 59 80 43 80
+          C 23 80 12 66 12 49
+          C 12 30 27 16 46 16
+          C 65 16 79 28 93 42
+          C 96 45 98 48 100 50
+          C 115 34 132 16 153 16
+          C 173 16 187 31 187 50
+          C 187 69 173 84 153 84
+          C 133 84 116 66 100 50
+          C 97 53 94 56 91 59
+          C 82 68 75 75 66 79" />
+</svg>
