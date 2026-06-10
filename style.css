@@ -389,6 +389,7 @@ body.page {
 @font-face {
   font-family: "Zyrko";
   src: url("Zyrko.woff2") format("woff2"),
+       url("Zyrko.otf") format("opentype"),
        url("Zyrko.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;

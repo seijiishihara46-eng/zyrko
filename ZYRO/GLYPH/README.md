@@ -40,7 +40,7 @@ The published font lives in `CANON/SYMBOLS/` (Zyrko.ttf / Zyrko.woff2).
 ```
 cd pipeline
 python zyro_outline.py     # -> dist/zyro-glyph-outline.svg
-python zyro_font.py        # -> dist/Zyrko.ttf, dist/Zyrko.woff2
+python zyro_font.py        # -> dist/Zyrko.ttf, .woff2 (glyf) and .otf (CFF)
 ```
 
 Requires `shapely`, `fonttools`, `brotli` (`pip install shapely fonttools brotli`).

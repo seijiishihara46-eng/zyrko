@@ -1,7 +1,9 @@
 """
 Build the Zyro font (U+E000) from the canonical outline.
 Pure-Python: shapely (via zyro_outline) + fontTools.
-Run: python zyro_font.py [flip]  ->  writes ../dist/Zyrko.ttf and ../dist/Zyrko.woff2
+Run: python zyro_font.py [flip]
+  -> ../dist/Zyrko.ttf, ../dist/Zyrko.woff2  (TrueType / glyf)
+  -> ../dist/Zyrko.otf                       (OpenType / CFF)
 
 'flip' inverts contour winding (verification toggle).
 """
@@ -10,6 +12,7 @@ from pathlib import Path
 from shapely.geometry.polygon import orient
 from fontTools.fontBuilder import FontBuilder
 from fontTools.pens.ttGlyphPen import TTGlyphPen
+from fontTools.pens.t2CharStringPen import T2CharStringPen
 
 from zyro_outline import build as build_outline   # same folder
 
@@ -51,37 +54,64 @@ def emit_ring(pen, coords, want_cw):
     pen.closePath()
 
 
-def build_glyph():
-    pen = TTGlyphPen(None)
-    outer_cw = not FLIP
+def draw_glyph(pen, outer_cw):
+    """Pen-agnostic: works for TTGlyphPen and T2CharStringPen alike."""
     for p in polys:
         po = orient(p, 1.0)
         emit_ring(pen, list(po.exterior.coords), want_cw=outer_cw)
         for hole in po.interiors:
             emit_ring(pen, list(hole.coords), want_cw=(not outer_cw))
-    return pen.glyph()
 
 
-xs = [round(x * SCALE) for p in polys for x, y in p.exterior.coords]
-glyph_zyro = build_glyph()
-empty = TTGlyphPen(None).glyph()
-
-fb = FontBuilder(UPM, isTTF=True)
-fb.setupGlyphOrder([".notdef", "space", "zyro"])
-fb.setupCharacterMap({0x20: "space", 0xE000: "zyro"})
-fb.setupGlyf({".notdef": empty, "space": empty, "zyro": glyph_zyro})
 adv = int(200 * SCALE)
-fb.setupHorizontalMetrics({".notdef": (adv, 0), "space": (adv, 0), "zyro": (adv, min(xs))})
-fb.setupHorizontalHeader(ascent=800, descent=-200)
-fb.setupNameTable({
+xs = [round(x * SCALE) for p in polys for x, y in p.exterior.coords]
+xmin = min(xs)
+
+NAMES = {
     "familyName": "Zyrko", "styleName": "Regular",
     "fullName": "Zyrko Regular", "psName": "Zyrko-Regular",
     "version": "1.0",
-    "copyright": "Zyrko glyph U+E000 (canonical v2.5, frozen 2026-06-10)"})
-fb.setupOS2(sTypoAscender=800, sTypoDescender=-200, usWinAscent=800, usWinDescent=200)
-fb.setupPost()
+    "copyright": "Zyrko glyph U+E000 (canonical v2.5, frozen 2026-06-10)"}
+METRICS = {".notdef": (adv, 0), "space": (adv, 0), "zyro": (adv, xmin)}
+ORDER = [".notdef", "space", "zyro"]
+CMAP = {0x20: "space", 0xE000: "zyro"}
 
+
+def finish(fb):
+    fb.setupHorizontalMetrics(METRICS)
+    fb.setupHorizontalHeader(ascent=800, descent=-200)
+    fb.setupNameTable(NAMES)
+    fb.setupOS2(sTypoAscender=800, sTypoDescender=-200, usWinAscent=800, usWinDescent=200)
+    fb.setupPost()
+
+
+# ---- TrueType (glyf): outer contours clockwise ----
+tt_pen = TTGlyphPen(None)
+draw_glyph(tt_pen, outer_cw=not FLIP)
+fb = FontBuilder(UPM, isTTF=True)
+fb.setupGlyphOrder(ORDER)
+fb.setupCharacterMap(CMAP)
+fb.setupGlyf({".notdef": TTGlyphPen(None).glyph(), "space": TTGlyphPen(None).glyph(),
+              "zyro": tt_pen.glyph()})
+finish(fb)
 fb.save(str(DIST / "Zyrko.ttf"))
 fb.font.flavor = "woff2"
 fb.font.save(str(DIST / "Zyrko.woff2"))
-print(f"built {DIST/'Zyrko.ttf'} / Zyrko.woff2 | parts={len(polys)} adv={adv} xmin={min(xs)} flip={FLIP}")
+
+# ---- OpenType (CFF): PostScript winding is opposite -> outer counter-clockwise ----
+cff_pen = T2CharStringPen(adv, None)
+draw_glyph(cff_pen, outer_cw=bool(FLIP))
+charstrings = {
+    ".notdef": T2CharStringPen(adv, None).getCharString(),
+    "space": T2CharStringPen(adv, None).getCharString(),
+    "zyro": cff_pen.getCharString(),
+}
+fbo = FontBuilder(UPM, isTTF=False)
+fbo.setupGlyphOrder(ORDER)
+fbo.setupCharacterMap(CMAP)
+fbo.setupCFF(NAMES["psName"], {"FullName": NAMES["fullName"], "FamilyName": NAMES["familyName"]},
+             charstrings, {})
+finish(fbo)
+fbo.save(str(DIST / "Zyrko.otf"))
+
+print(f"built Zyrko.ttf / .woff2 / .otf | parts={len(polys)} adv={adv} xmin={xmin} flip={FLIP}")
