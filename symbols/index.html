@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zyrko — Symbols</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" href="../favicon.png">
+  <link rel="apple-touch-icon" href="../favicon.png">
+  <style>
+    /* ── symbols page (observation guide, not a dictionary) ── */
+    .sym-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    .sym-hero .glyph {
+      font-family: "Zyrko", sans-serif;
+      font-size: 6.4rem;
+      line-height: 1;
+      color: var(--text-active);
+      margin-bottom: 2.4rem;
+    }
+    .sym-title {
+      font-size: 1.0rem;
+      letter-spacing: 0.34em;
+      text-indent: 0.34em;
+      text-transform: uppercase;
+      color: var(--text-active);
+      font-weight: 300;
+    }
+    .sym-sub {
+      margin-top: 0.9rem;
+      font-size: 0.62rem;
+      letter-spacing: 0.26em;
+      text-indent: 0.26em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      font-weight: 300;
+    }
+    .sym-desc {
+      font-size: 0.76rem;
+      color: var(--text-mid);
+      letter-spacing: 0.03em;
+      margin-bottom: 1.8rem;
+      font-weight: 300;
+    }
+    /* symbol rows: mark · name · gloss */
+    .sym-row {
+      display: grid;
+      grid-template-columns: 2.4rem 6rem 1fr;
+      gap: 0 1.4rem;
+      align-items: baseline;
+      margin-bottom: 1.15rem;
+    }
+    .sym-mark {
+      font-size: 1.0rem;
+      line-height: 1;
+      color: var(--text-surface);
+      text-align: center;
+    }
+    .sym-mark.glyph { font-family: "Zyrko", sans-serif; font-size: 1.25rem; }
+    .sym-name {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-indent: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+    }
+    .sym-gloss {
+      font-size: 0.7rem;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+      font-weight: 300;
+    }
+    /* sigils: image marks */
+    .sigil-row { grid-template-columns: 2.4rem 6rem 1fr; }
+    .sigil-row img { width: 22px; height: 22px; display: block; margin: 0 auto; opacity: 0.92; }
+    /* structure flow */
+    .flow {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      margin: 0.5rem 0;
+    }
+    .flow-step {
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-indent: 0.22em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      font-weight: 300;
+    }
+    .flow-arrow { font-size: 0.7rem; color: var(--text-dim); line-height: 1; }
+    /* footer links + quiet observation */
+    .sym-obs {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.4rem;
+      margin-top: 0.5rem;
+    }
+    .sym-obs video { width: 132px; height: 132px; opacity: 0.85; }
+    .sym-links { display: flex; gap: 1.8rem; flex-wrap: wrap; justify-content: center; }
+    .sym-links a {
+      font-size: 0.58rem;
+      letter-spacing: 0.2em;
+      text-indent: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      text-decoration: none;
+      font-weight: 300;
+      transition: color 0.6s ease;
+    }
+    .sym-links a:hover { color: var(--text-mid); }
+
+    @media (max-width: 600px) {
+      .sym-hero .glyph { font-size: 4.6rem; }
+      .sym-row, .sigil-row { grid-template-columns: 2rem 5rem 1fr; gap: 0 1rem; }
+    }
+  </style>
+</head>
+<body class="page">
+
+  <nav>
+    <a href="../" class="nav-home">ZYRO</a>
+    <a href="../about/">ABOUT</a>
+    <a href="../HUSH/">HUSH</a>
+    <a href="../symbols/" class="current">SYMBOLS</a>
+    <a href="../archive/">ARCHIVE</a>
+    <a href="../product/">PRODUCT</a>
+  </nav>
+
+  <div class="page-wrap">
+
+    <!-- 1 · Hero -->
+    <div class="sym-hero">
+      <span class="glyph" aria-label="Zyro">&#xE000;</span>
+      <p class="sym-title">Symbols</p>
+      <p class="sym-sub">The Shape of Observation</p>
+    </div>
+
+    <hr class="page-rule">
+
+    <!-- 2 · Glyphs -->
+    <p class="page-heading">Glyphs</p>
+    <p class="sym-desc">Primitive marks for phenomena.</p>
+
+    <div class="sym-row"><span class="sym-mark">&#9679;</span><span class="sym-name">Void</span><span class="sym-gloss">unresolved center</span></div>
+    <div class="sym-row"><span class="sym-mark">&#9675;</span><span class="sym-name">Field</span><span class="sym-gloss">held extent</span></div>
+    <div class="sym-row"><span class="sym-mark">&#9474;</span><span class="sym-name">Trace</span><span class="sym-gloss">path of motion</span></div>
+    <div class="sym-row"><span class="sym-mark">&#183;</span><span class="sym-name">Point</span><span class="sym-gloss">singular instance</span></div>
+    <div class="sym-row"><span class="sym-mark">&#9651;</span><span class="sym-name">Vessel</span><span class="sym-gloss">containing form</span></div>
+    <div class="sym-row"><span class="sym-mark glyph">&#xE000;</span><span class="sym-name">Zyro</span><span class="sym-gloss">convergence sign</span></div>
+
+    <hr class="page-rule">
+
+    <!-- 3 · Sigils -->
+    <p class="page-heading">Sigils</p>
+    <p class="sym-desc">Converged marks of intention and structure.</p>
+
+    <div class="sym-row sigil-row"><span class="sym-mark glyph">&#xE000;</span><span class="sym-name">Orbit</span><span class="sym-gloss">the Zyro trajectory, frozen</span></div>
+    <div class="sym-row sigil-row"><span class="sym-mark"><img src="../ZYRO/GLYPH/icons/zyro-hush-icon.svg" alt="Hush"></span><span class="sym-name">Hush</span><span class="sym-gloss">the observing phenomenon</span></div>
+
+    <p class="page-line faint" style="margin-top:1.4rem">Others remain unconverged.</p>
+
+    <hr class="page-rule">
+
+    <!-- 4 · Alphabet -->
+    <p class="page-heading">Alphabet</p>
+    <p class="sym-desc">Human translation layer.</p>
+
+    <div class="component-row"><span class="component-name">V</span><span class="component-desc">Void</span></div>
+    <div class="component-row"><span class="component-name">F</span><span class="component-desc">Field</span></div>
+    <div class="component-row"><span class="component-name">T</span><span class="component-desc">Trace</span></div>
+    <div class="component-row"><span class="component-name">P</span><span class="component-desc">Point</span></div>
+    <div class="component-row"><span class="component-name">S</span><span class="component-desc">Vessel</span></div>
+    <div class="component-row"><span class="component-name">Z</span><span class="component-desc">Zyro</span></div>
+    <div class="component-row"><span class="component-name">O</span><span class="component-desc">Orbit</span></div>
+    <div class="component-row"><span class="component-name">C</span><span class="component-desc">Converge</span></div>
+
+    <hr class="page-rule">
+
+    <!-- 5 · Structure -->
+    <p class="page-heading">Structure</p>
+    <div class="flow">
+      <span class="flow-step">Phenomena</span>
+      <span class="flow-arrow">&#8595;</span>
+      <span class="flow-step">Glyph</span>
+      <span class="flow-arrow">&#8595;</span>
+      <span class="flow-step">Sigil</span>
+      <span class="flow-arrow">&#8595;</span>
+      <span class="flow-step">Alphabet</span>
+    </div>
+
+    <hr class="page-rule short">
+
+    <!-- 6 · Observation / links -->
+    <div class="sym-obs">
+      <video src="../ZYRO/GLYPH/3d/zyro-metal-rotate.webm" autoplay muted loop playsinline aria-label="Zyro, observed"></video>
+      <div class="sym-links">
+        <a href="../ZYRO/">Zyro</a>
+        <a href="../ZYRO/GLYPH/zyro-glyph-canonical.svg">Canonical Glyph</a>
+        <a href="../ZYRO/GLYPH/3d/zyro-metal-rotate.mp4">Metal</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <script src="../page.js"></script>
+</body>
+</html>
