@@ -19,15 +19,21 @@ Derivation rules for Zyro outputs. Parent = `zyro-glyph-canonical`.
 - `zyro-print-master.svg` — single-color, Orbit as counters, 60 × 30 mm, vector.
 - Press: K100 (optional rich black C40 K100). No tints, gradients, shadows.
 
-## Metal / 3D (Blender stage — external tool)
+## Metal / 3D (done — Blender headless)
 
-Source: `SYMBOLS/zyro-glyph-font-ready.svg` (centerline + field).
+Reproducible: `ZYRO/GLYPH/pipeline/zyro_blender.py` (Blender 4.4).
+Source: `ZYRO/GLYPH/dist/zyro-glyph-outline.svg` (fill-only, Orbit as counters).
 
-1. Import SVG as curve.
-2. Use the black field as the body; the Orbit centerline as the inset channel.
-3. Extrude / bevel for depth. Keep edges clean (Void = perfect black, no glow).
-4. Metal: dark chrome / black metal. The Orbit reads as the bright inset (the silver face).
-5. No texture noise, no emissive glow. Preserve quiet / minimal.
+Pipeline: import SVG curve -> fill -> mesh -> solidify + bevel -> polished
+silver chrome (Metallic 1.0, Roughness 0.30) -> front softbox + key/rim/top ->
+3/4 camera -> Cycles render on near-black world.
+
+Output: `ZYRO/GLYPH/3d/zyro-metal.png` (also `CANON/VISUAL/zyro-metal.png`).
+The `.blend` is regenerable (gitignored). Silver reads as the figure's face;
+background stays near-black (quiet / minimal). No texture noise, no glow.
+
+Run:
+`"…\Blender 4.4\blender.exe" --background --python zyro_blender.py`
 
 ## Hush face
 
