@@ -23,9 +23,9 @@ What ships. What exists in the world.
 
 ## Product Index
 
-| Name | Description | Status |
-|------|-------------|--------|
-| —    | —           | —      |
+| Name    | Description                                           | Status  |
+|---------|-------------------------------------------------------|---------|
+| spatial | Hand tracking spatial interface — phase node topology | active  |
 
 ---
 
@@ -42,4 +42,4 @@ PRODUCTS/
 
 ## Contents
 
-_Nothing yet._
+- `spatial/` — browser-based hand tracking spatial interface
