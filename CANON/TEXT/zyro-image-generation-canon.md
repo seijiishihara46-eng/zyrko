@@ -62,6 +62,19 @@ Do not add:
 
 The only white element on the right side is the canonical Orbit stroke that forms the continuous figure-eight trajectory. The inside of the right chamber should read as unbroken black negative space, not as a separate circular hole, lens, eye, dish, or mechanical recess.
 
+## Accepted Sci-Fi Wall Behavior
+
+Accepted reference behavior, confirmed by the user on 2026-07-09:
+
+- A massive dark sci-fi stone/metal wall may contain the Zyro glyph as an embedded relief.
+- The wall can have panels, scratches, cracks, vertical light slits, wet floor reflections, depth, and cinematic lighting.
+- The Zyro body may read as carved black relief or inset dark material.
+- The canonical Orbit may read as a continuous luminous white channel.
+- The right Void chamber must remain a plain dark field enclosed only by the continuous Orbit path.
+- There must be no circular recess, inner oval pit, crescent, eye, lens, or additional mark inside the right chamber.
+
+This wall treatment is acceptable as an atmosphere-layer interpretation as long as the Zyro silhouette and chamber rules are preserved.
+
 ## Correct Generation Architecture
 
 For accurate outputs:
@@ -84,7 +97,7 @@ Final check = compare against canon rules
 Use this instruction whenever Zyro appears in an image generation request:
 
 ```text
-Zyro is not a newly designed logo. Use the canonical Zyro glyph as the visual source. Do not redesign the silhouette. Preserve the black infinity-shaped field, one continuous white Orbit, restrained left spiral, single convergence crossing, empty right Void chamber, 2:1 ratio, and binary black/white logic. The right Void chamber must stay empty black negative space: no crescent, no partial inner line, no extra arc, no eye highlight, no decorative stroke, no circular recess, no circular depression, no inner oval ring, no dish-like pit, no mechanical round plate. If exact shape fidelity matters, generate only the surrounding scene and composite the canonical SVG afterward.
+Zyro is not a newly designed logo. Use the canonical Zyro glyph as the visual source. Do not redesign the silhouette. Preserve the black infinity-shaped field, one continuous white Orbit, restrained left spiral, single convergence crossing, empty right Void chamber, 2:1 ratio, and binary black/white logic. The right Void chamber must stay empty black negative space: no crescent, no partial inner line, no extra arc, no eye highlight, no decorative stroke, no circular recess, no circular depression, no inner oval ring, no dish-like pit, no mechanical round plate. For sci-fi wall scenes, the wall may be detailed and atmospheric, but the right chamber must remain a plain dark field enclosed only by the Orbit. If exact shape fidelity matters, generate only the surrounding scene and composite the canonical SVG afterward.
 ```
 
 ## When Direct Image Generation Is Allowed
