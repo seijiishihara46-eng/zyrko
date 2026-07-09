@@ -108,7 +108,28 @@ Do not lose:
 
 - the left side must read as spiral-origin behavior;
 - the spiral must connect to the one-stroke trajectory;
-- it must not become arbitrary decoration detached from Zyro.
+- it must not become arbitrary decoration detached from Zyro;
+- the spiral line must not break, terminate early, or appear as disconnected fragments.
+
+## Broken Spiral Line Rule
+
+A broken left spiral is a failure pattern.
+
+Reject or revise when:
+
+- the spiral has a visible gap;
+- the spiral appears as two separate strokes;
+- the inner curl is detached from the outer trajectory;
+- the spiral ends before it connects to the main one-stroke movement;
+- wall cracks, texture, glow, or sketch marks visually cut the spiral path.
+
+The line may look carved, engraved, glowing, inked, worn, or hand-drawn, but it must still read as one continuous movement.
+
+Failure tag:
+
+```text
+left_spiral_broken_line
+```
 
 ## Image Generation Rule
 
@@ -117,6 +138,7 @@ When generating visual or illustrative Zyro images:
 ```text
 Preserve the essence: left spiral, right droplet, one-stroke trajectory, convergence, asymmetry, and Void weight.
 The exact spiral curvature may vary, but the right side must not become a circular recess, eye, lens, or generic loop.
+The left spiral may vary in curvature and material expression, but the spiral line must remain continuous and connected to the one-stroke trajectory.
 The output should not collapse into a generic infinity logo.
 ```
 
