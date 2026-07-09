@@ -72,6 +72,38 @@ For glyph/font assets, the one-stroke logic is compressed into a white Orbit cha
 
 For illustration/image-generation assets, the one-stroke logic can be expressed as a carved groove, luminous channel, engraved flow, wall relief, or animated trace.
 
+## Width / Outline Expression Rule
+
+Zyro can appear in more than one valid expression mode.
+
+The difference between the centerline form and the outline/counter form is not a correctness conflict. It is a representation boundary:
+
+```text
+centerline / one-stroke expression = trajectory is shown directly
+wide-stroke expression = the trajectory has visible material width
+outline / counter expression = the stroke has been expanded and subtracted or converted into shape
+```
+
+All of these can be correct when they preserve the Essence Canon.
+
+### Accepted expression modes
+
+- `centerline`: thin one-stroke trajectory, closest to drawing logic;
+- `wide_stroke`: luminous/carved/inked Orbit with visible width;
+- `outline_counter`: production/font/print form where the Orbit becomes a counter or cut channel;
+- `wall_relief`: physical relief where the same trajectory is expressed through depth, light, and material.
+
+### Boundary between 3 and 4 in the SVG list
+
+`zyro-centerline-master.svg` and `zyro-glyph-outline.svg` sit on opposite sides of the same boundary:
+
+- `zyro-centerline-master.svg` preserves the editable one-stroke centerline logic;
+- `zyro-glyph-outline.svg` is the expanded/outline build output used for font, print, or manufacturing logic.
+
+Both are valid Zyro representations. The centerline is closer to the remembered Essence. The outline/counter version is closer to production output.
+
+Do not treat line-width conversion as a redesign if the left spiral, right droplet/Void side, convergence, and one-stroke movement are preserved.
+
 ## Right Droplet Rule
 
 The right side is remembered as a droplet, not merely a circular loop.
@@ -139,6 +171,7 @@ When generating visual or illustrative Zyro images:
 Preserve the essence: left spiral, right droplet, one-stroke trajectory, convergence, asymmetry, and Void weight.
 The exact spiral curvature may vary, but the right side must not become a circular recess, eye, lens, or generic loop.
 The left spiral may vary in curvature and material expression, but the spiral line must remain continuous and connected to the one-stroke trajectory.
+Line-width changes are allowed: thin centerline, wide luminous stroke, carved channel, or outline/counter expression can all be correct if the Essence Canon is preserved.
 The output should not collapse into a generic infinity logo.
 ```
 
