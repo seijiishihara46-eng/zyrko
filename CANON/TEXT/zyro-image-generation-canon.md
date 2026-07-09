@@ -53,9 +53,14 @@ Do not add:
 - extra white curves
 - eye-like highlights
 - secondary chamber outlines
+- circular recesses
+- circular depressions
+- dish-like pits
+- inner oval rings
+- raised or recessed round plates
 - decorative cracks or symbols inside the chamber
 
-The only white element on the right side is the canonical Orbit stroke that forms the continuous figure-eight trajectory. The inside of the right chamber should read as unbroken black negative space.
+The only white element on the right side is the canonical Orbit stroke that forms the continuous figure-eight trajectory. The inside of the right chamber should read as unbroken black negative space, not as a separate circular hole, lens, eye, dish, or mechanical recess.
 
 ## Correct Generation Architecture
 
@@ -79,7 +84,7 @@ Final check = compare against canon rules
 Use this instruction whenever Zyro appears in an image generation request:
 
 ```text
-Zyro is not a newly designed logo. Use the canonical Zyro glyph as the visual source. Do not redesign the silhouette. Preserve the black infinity-shaped field, one continuous white Orbit, restrained left spiral, single convergence crossing, empty right Void chamber, 2:1 ratio, and binary black/white logic. The right Void chamber must stay empty black negative space: no crescent, no partial inner line, no extra arc, no eye highlight, no decorative stroke. If exact shape fidelity matters, generate only the surrounding scene and composite the canonical SVG afterward.
+Zyro is not a newly designed logo. Use the canonical Zyro glyph as the visual source. Do not redesign the silhouette. Preserve the black infinity-shaped field, one continuous white Orbit, restrained left spiral, single convergence crossing, empty right Void chamber, 2:1 ratio, and binary black/white logic. The right Void chamber must stay empty black negative space: no crescent, no partial inner line, no extra arc, no eye highlight, no decorative stroke, no circular recess, no circular depression, no inner oval ring, no dish-like pit, no mechanical round plate. If exact shape fidelity matters, generate only the surrounding scene and composite the canonical SVG afterward.
 ```
 
 ## When Direct Image Generation Is Allowed
@@ -111,7 +116,7 @@ Reject or revise results when:
 - Orbit becomes multiple lines
 - left spiral becomes decorative or too complex
 - right Void chamber becomes a generic oval
-- right Void chamber contains a crescent, partial white line, arc fragment, eye highlight, or decorative inner stroke
+- right Void chamber contains a crescent, partial white line, arc fragment, eye highlight, decorative inner stroke, circular recess, circular depression, oval ring, dish-like pit, or mechanical round plate
 - center crossing moves away from convergence
 - 2:1 proportion collapses
 - gray, glow, texture, gradients, or extra marks appear
