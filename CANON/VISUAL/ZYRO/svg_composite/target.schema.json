@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "zyro_svg_composite_target.schema.json",
+  "title": "Zyro SVG Composite Target Set",
+  "type": "object",
+  "required": ["run_id", "input_image", "targets"],
+  "properties": {
+    "run_id": {
+      "type": "string",
+      "description": "Stable ID for this composite run."
+    },
+    "input_image": {
+      "type": "string",
+      "description": "Path or Drive reference for the source image."
+    },
+    "output_image": {
+      "type": "string",
+      "description": "Expected output image path."
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "source_svg", "mode", "quad"],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "source_svg": {
+            "type": "string",
+            "enum": [
+              "CANON/SYMBOLS/zyro-glyph-canonical.svg",
+              "CANON/SYMBOLS/zyro-glyph-font-ready.svg",
+              "CANON/SYMBOLS/zyro-print-master.svg",
+              "CANON/SYMBOLS/zyro-hush-face.svg",
+              "CANON/SYMBOLS/zyro-hush-icon.svg",
+              "ZYRO/GLYPH/zyro-centerline-master.svg",
+              "ZYRO/GLYPH/dist/zyro-glyph-outline.svg"
+            ]
+          },
+          "mode": {
+            "type": "string",
+            "enum": ["logo_print", "wall_carve", "paper_ink", "hologram", "debug_flat"]
+          },
+          "quad": {
+            "type": "array",
+            "minItems": 4,
+            "maxItems": 4,
+            "items": {
+              "type": "array",
+              "minItems": 2,
+              "maxItems": 2,
+              "items": {"type": "number"}
+            },
+            "description": "Destination quadrilateral: top_left, top_right, bottom_right, bottom_left."
+          },
+          "opacity": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1,
+            "default": 1
+          },
+          "blend": {
+            "type": "string",
+            "enum": ["normal", "multiply", "screen", "overlay", "soft_light"],
+            "default": "normal"
+          },
+          "tint": {
+            "type": "string",
+            "pattern": "^#[0-9A-Fa-f]{6}$"
+          },
+          "material": {
+            "type": "object",
+            "properties": {
+              "bevel_px": {"type": "number", "minimum": 0},
+              "blur_px": {"type": "number", "minimum": 0},
+              "shadow_px": {"type": "number", "minimum": 0},
+              "glow_px": {"type": "number", "minimum": 0},
+              "texture_follow": {"type": "boolean"}
+            },
+            "additionalProperties": false
+          },
+          "notes": {
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
