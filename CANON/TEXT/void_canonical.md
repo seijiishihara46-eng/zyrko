@@ -1,8 +1,8 @@
-\# void\_canonical.md
+# void_canonical.md
 
 
 
-\# VOID
+# VOID
 
 
 
@@ -14,15 +14,15 @@ VOID is NOT:
 
 
 
-\* darkness
+* darkness
 
-\* evil
+* evil
 
-\* a portal
+* a portal
 
-\* symbolic emptiness
+* symbolic emptiness
 
-\* destruction
+* destruction
 
 
 
@@ -30,21 +30,21 @@ VOID is:
 
 
 
-\* attraction
+* attraction
 
-\* held absence
+* held absence
 
-\* unresolved depth
+* unresolved depth
 
-\* structural incompleteness
-
-
-
-\---
+* structural incompleteness
 
 
 
-\## Structural Role
+---
+
+
+
+## Structural Role
 
 
 
@@ -52,11 +52,11 @@ VOID functions as:
 
 
 
-\* convergence center
+* convergence center
 
-\* unresolved attractor
+* unresolved attractor
 
-\* phase instability anchor
+* phase instability anchor
 
 
 
@@ -68,19 +68,19 @@ VOID should preserve:
 
 
 
-\* ambiguity
+* ambiguity
 
-\* depth
+* depth
 
-\* structural tension
-
-
-
-\---
+* structural tension
 
 
 
-\## Visual Manifestation
+---
+
+
+
+## Visual Manifestation
 
 
 
@@ -88,13 +88,13 @@ Visual manifestation may appear:
 
 
 
-\* black
+* black
 
-\* depth-like
+* depth-like
 
-\* absorptive
+* absorptive
 
-\* spatially unstable
+* spatially unstable
 
 
 
@@ -108,21 +108,21 @@ VOID should not become:
 
 
 
-\* decorative
+* decorative
 
-\* glowing fantasy imagery
+* glowing fantasy imagery
 
-\* symbolic iconography
+* symbolic iconography
 
-\* simplified darkness metaphor
-
-
-
-\---
+* simplified darkness metaphor
 
 
 
-\## Operational Notes
+---
+
+
+
+## Operational Notes
 
 
 
@@ -130,11 +130,11 @@ VOID should feel:
 
 
 
-\* structurally unresolved
+* structurally unresolved
 
-\* observationally unstable
+* observationally unstable
 
-\* partially inaccessible
+* partially inaccessible
 
 
 

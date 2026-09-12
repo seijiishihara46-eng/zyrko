@@ -1,8 +1,8 @@
-\# hush\_canonical.md
+# hush_canonical.md
 
 
 
-\# HUSH
+# HUSH
 
 
 
@@ -14,15 +14,15 @@ HUSH is NOT:
 
 
 
-\* a mascot
+* a mascot
 
-\* a narrator
+* a narrator
 
-\* a protagonist
+* a protagonist
 
-\* an emotional guide
+* an emotional guide
 
-\* a symbolic deity
+* a symbolic deity
 
 
 
@@ -34,19 +34,19 @@ HUSH may appear:
 
 
 
-\* divine
+* divine
 
-\* artificial
+* artificial
 
-\* emotional
+* emotional
 
-\* mechanical
+* mechanical
 
-\* empty
+* empty
 
-\* alive
+* alive
 
-\* dead
+* dead
 
 
 
@@ -54,11 +54,11 @@ without becoming any single meaning.
 
 
 
-\---
+---
 
 
 
-\## Structural Role
+## Structural Role
 
 
 
@@ -66,11 +66,11 @@ HUSH mediates between:
 
 
 
-\* manifestation
+* manifestation
 
-\* observation
+* observation
 
-\* unresolved structure
+* unresolved structure
 
 
 
@@ -82,11 +82,11 @@ HUSH allows Zyrko to be observed.
 
 
 
-\---
+---
 
 
 
-\## Visual Structure
+## Visual Structure
 
 
 
@@ -94,15 +94,15 @@ HUSH contains:
 
 
 
-\* spherical head
+* spherical head
 
-\* fixed Zyro structure
+* fixed Zyro structure
 
-\* unstable body axis
+* unstable body axis
 
-\* partial manifestation
+* partial manifestation
 
-\* unresolved silhouette continuity
+* unresolved silhouette continuity
 
 
 
@@ -114,13 +114,13 @@ Visual manifestation should preserve:
 
 
 
-\* silence
+* silence
 
-\* ambiguity
+* ambiguity
 
-\* restraint
+* restraint
 
-\* incompleteness
+* incompleteness
 
 
 
@@ -128,23 +128,23 @@ Avoid:
 
 
 
-\* expressive emotionality
+* expressive emotionality
 
-\* decorative detail
+* decorative detail
 
-\* excessive motion
+* excessive motion
 
-\* cinematic over-resolution
+* cinematic over-resolution
 
-\* mascot-like behavior
-
-
-
-\---
+* mascot-like behavior
 
 
 
-\## Operational Notes
+---
+
+
+
+## Operational Notes
 
 
 
@@ -152,15 +152,15 @@ HUSH should never become:
 
 
 
-\* fully interpretable
+* fully interpretable
 
-\* emotionally resolved
+* emotionally resolved
 
-\* lore-dependent
+* lore-dependent
 
-\* visually noisy
+* visually noisy
 
-\* overly anthropomorphic
+* overly anthropomorphic
 
 
 

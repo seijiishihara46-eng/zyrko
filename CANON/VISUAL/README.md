@@ -1,4 +1,4 @@
-\# VISUAL
+# VISUAL
 
 
 
@@ -8,21 +8,21 @@ Canonical manifestation references.
 
 Images in this folder represent:
 
-\- stabilized visual convergence
+- stabilized visual convergence
 
-\- structural identity anchors
+- structural identity anchors
 
-\- manifestation consistency references
+- manifestation consistency references
 
 
 
 These images should not be treated as:
 
-\- temporary experiments
+- temporary experiments
 
-\- stylistic reinterpretations
+- stylistic reinterpretations
 
-\- decorative variations
+- decorative variations
 
 
 

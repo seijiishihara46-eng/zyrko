@@ -1,4 +1,4 @@
-\# Layer Model (Canonical Definition)
+# Layer Model (Canonical Definition)
 
 
 
@@ -10,43 +10,11 @@ Contradiction across layers does not automatically indicate error.
 
 
 
-\---
+---
 
 
 
-\## Ontological Layer
-
-
-
-Defines:
-
-
-
-\* existence structure
-
-\* topology
-
-\* convergence conditions
-
-\* unresolved states
-
-
-
-Questions:
-
-
-
-\* What is Zyrko?
-
-\* What structurally exists?
-
-
-
-\---
-
-
-
-\## Operational Layer
+## Ontological Layer
 
 
 
@@ -54,11 +22,13 @@ Defines:
 
 
 
-\* manifestation behavior
+* existence structure
 
-\* observable interaction
+* topology
 
-\* temporary stabilization
+* convergence conditions
+
+* unresolved states
 
 
 
@@ -66,17 +36,17 @@ Questions:
 
 
 
-\* How does Zyrko behave?
+* What is Zyrko?
 
-\* How does manifestation operate?
-
-
-
-\---
+* What structurally exists?
 
 
 
-\## Perceptual Layer
+---
+
+
+
+## Operational Layer
 
 
 
@@ -84,11 +54,11 @@ Defines:
 
 
 
-\* interpretation
+* manifestation behavior
 
-\* observational instability
+* observable interaction
 
-\* viewer-side recognition
+* temporary stabilization
 
 
 
@@ -96,17 +66,17 @@ Questions:
 
 
 
-\* How is Zyrko perceived?
+* How does Zyrko behave?
 
-\* How does meaning emerge?
-
-
-
-\---
+* How does manifestation operate?
 
 
 
-\## Visual Layer
+---
+
+
+
+## Perceptual Layer
 
 
 
@@ -114,13 +84,11 @@ Defines:
 
 
 
-\* geometry
+* interpretation
 
-\* silhouette
+* observational instability
 
-\* manifestation surfaces
-
-\* visual convergence
+* viewer-side recognition
 
 
 
@@ -128,15 +96,47 @@ Questions:
 
 
 
-\* How does structure appear visually?
+* How is Zyrko perceived?
+
+* How does meaning emerge?
 
 
 
-\---
+---
 
 
 
-\## Operational Notes
+## Visual Layer
+
+
+
+Defines:
+
+
+
+* geometry
+
+* silhouette
+
+* manifestation surfaces
+
+* visual convergence
+
+
+
+Questions:
+
+
+
+* How does structure appear visually?
+
+
+
+---
+
+
+
+## Operational Notes
 
 
 
@@ -148,11 +148,11 @@ Cross-layer interpretation must preserve:
 
 
 
-\* ambiguity
+* ambiguity
 
-\* distinction
+* distinction
 
-\* structural context
+* structural context
 
 
 

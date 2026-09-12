@@ -1,4 +1,4 @@
-\# Viewer
+# Viewer
 
 
 
@@ -12,9 +12,9 @@ Viewer is NOT the structural Observer component.
 
 Viewer participates in:
 
-\- interpretation
+- interpretation
 
-\- perception
+- perception
 
-\- incomplete recognition
+- incomplete recognition
 

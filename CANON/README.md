@@ -1,4 +1,4 @@
-\# CANON
+# CANON
 
 
 
@@ -8,23 +8,23 @@ Canonical convergence layer.
 
 This folder contains:
 
-\- stabilized references
+- stabilized references
 
-\- canonical terminology
+- canonical terminology
 
-\- visual convergence points
+- visual convergence points
 
-\- non-experimental structural definitions
+- non-experimental structural definitions
 
 
 
 Files here should be treated as:
 
-\- high-priority references
+- high-priority references
 
-\- stability anchors
+- stability anchors
 
-\- non-volatile structures
+- non-volatile structures
 
 
 
@@ -40,11 +40,11 @@ When conflicts occur:
 
 CANON overrides:
 
-\- experimental interpretation
+- experimental interpretation
 
-\- temporary manifestation
+- temporary manifestation
 
-\- exploratory outputs
+- exploratory outputs
 
 
 

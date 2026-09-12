@@ -1,4 +1,4 @@
-\# Observer (Canonical Definition)
+# Observer (Canonical Definition)
 
 
 
@@ -16,19 +16,19 @@ External humans should be referred to as:
 
 
 
-\* Viewer
+* Viewer
 
 &#x20; or
 
-\* External Observer
+* External Observer
 
 
 
-\---
+---
 
 
 
-\## Structural Role
+## Structural Role
 
 
 
@@ -36,11 +36,11 @@ Observer participates in:
 
 
 
-\* manifestation stability
+* manifestation stability
 
-\* convergence interaction
+* convergence interaction
 
-\* phase persistence
+* phase persistence
 
 
 
@@ -48,11 +48,11 @@ Observer is part of the system structure itself.
 
 
 
-\---
+---
 
 
 
-\## Operational Notes
+## Operational Notes
 
 
 
@@ -60,11 +60,11 @@ Do not conflate:
 
 
 
-\* Observer
+* Observer
 
 &#x20; and
 
-\* Viewer
+* Viewer
 
 
 
@@ -72,13 +72,13 @@ The distinction must remain preserved across:
 
 
 
-\* ontology
+* ontology
 
-\* manifestation
+* manifestation
 
-\* operational philosophy
+* operational philosophy
 
-\* visual interpretation
+* visual interpretation
 
 
 

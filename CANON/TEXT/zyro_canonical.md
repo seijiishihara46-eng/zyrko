@@ -1,8 +1,8 @@
-\# zyro\_canonical.md
+# zyro_canonical.md
 
 
 
-\# ZYRO
+# ZYRO
 
 
 
@@ -14,13 +14,13 @@ ZYRO is NOT:
 
 
 
-\* decoration
+* decoration
 
-\* branding
+* branding
 
-\* ornament
+* ornament
 
-\* expressive illustration
+* expressive illustration
 
 
 
@@ -28,21 +28,21 @@ ZYRO indicates:
 
 
 
-\* convergence
+* convergence
 
-\* continuity
+* continuity
 
-\* structural identity
+* structural identity
 
-\* phase linkage
-
-
-
-\---
+* phase linkage
 
 
 
-\## Structural Role
+---
+
+
+
+## Structural Role
 
 
 
@@ -54,19 +54,19 @@ ZYRO functions as:
 
 
 
-\* a continuity marker
+* a continuity marker
 
-\* a convergence anchor
+* a convergence anchor
 
-\* a recognizable structural invariant
-
-
-
-\---
+* a recognizable structural invariant
 
 
 
-\## Visual Structure
+---
+
+
+
+## Visual Structure
 
 
 
@@ -74,13 +74,13 @@ The Zyro geometry should remain:
 
 
 
-\* stable
+* stable
 
-\* minimal
+* minimal
 
-\* exact
+* exact
 
-\* non-expressive
+* non-expressive
 
 
 
@@ -88,21 +88,21 @@ The Zyro structure must not be:
 
 
 
-\* reinterpreted
+* reinterpreted
 
-\* stylized excessively
+* stylized excessively
 
-\* distorted for emotion
+* distorted for emotion
 
-\* obscured unnecessarily
-
-
-
-\---
+* obscured unnecessarily
 
 
 
-\## Operational Notes
+---
+
+
+
+## Operational Notes
 
 
 
@@ -110,11 +110,11 @@ ZYRO should preserve:
 
 
 
-\* consistency
+* consistency
 
-\* structural clarity
+* structural clarity
 
-\* observational stability
+* observational stability
 
 
 

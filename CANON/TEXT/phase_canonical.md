@@ -1,8 +1,8 @@
-\# phase\_canonical.md
+# phase_canonical.md
 
 
 
-\# PHASE
+# PHASE
 
 
 
@@ -14,11 +14,11 @@ Phase is NOT:
 
 
 
-\* time
+* time
 
-\* chronology
+* chronology
 
-\* narrative progression
+* narrative progression
 
 
 
@@ -26,67 +26,67 @@ Phase describes:
 
 
 
-\* manifestation stability
+* manifestation stability
 
-\* structural coherence
+* structural coherence
 
-\* observational persistence
-
-
-
-\---
+* observational persistence
 
 
 
-\## Core Structure
+---
 
 
 
-\### phase.low
+## Core Structure
 
 
 
-\* weak manifestation
-
-\* partial convergence
-
-\* unstable structure
-
-\* minimal observability
+### phase.low
 
 
 
-\### phase.mid
+* weak manifestation
+
+* partial convergence
+
+* unstable structure
+
+* minimal observability
 
 
 
-\* observable structure field
-
-\* temporary stabilization
-
-\* readable convergence
+### phase.mid
 
 
 
-\### phase.high
+* observable structure field
+
+* temporary stabilization
+
+* readable convergence
 
 
 
-\* manifestation instability
-
-\* structural overload
-
-\* convergence collapse risk
-
-\* over-resolution danger
+### phase.high
 
 
 
-\---
+* manifestation instability
+
+* structural overload
+
+* convergence collapse risk
+
+* over-resolution danger
 
 
 
-\## Operational Layer
+---
+
+
+
+## Operational Layer
 
 
 
@@ -98,15 +98,15 @@ Operational states:
 
 
 
-\* Forming
+* Forming
 
-\* Holding
+* Holding
 
-\* Active
+* Active
 
-\* Resolving
+* Resolving
 
-\* Break
+* Break
 
 
 
@@ -114,11 +114,11 @@ These should not automatically be treated as equivalent to:
 
 
 
-\* phase.low
+* phase.low
 
-\* phase.mid
+* phase.mid
 
-\* phase.high
+* phase.high
 
 
 
@@ -126,11 +126,11 @@ Layer distinction must be preserved.
 
 
 
-\---
+---
 
 
 
-\## Operational Notes
+## Operational Notes
 
 
 
@@ -138,11 +138,11 @@ Phase should preserve:
 
 
 
-\* ambiguity
+* ambiguity
 
-\* instability
+* instability
 
-\* partial observability
+* partial observability
 
 
 
@@ -150,11 +150,11 @@ Phase should never become:
 
 
 
-\* rigid power scaling
+* rigid power scaling
 
-\* narrative leveling
+* narrative leveling
 
-\* simplified progression hierarchy
+* simplified progression hierarchy
 
 
 

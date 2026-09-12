@@ -1,4 +1,4 @@
-\# Ambivalence (Canonical Definition)
+# Ambivalence (Canonical Definition)
 
 
 
@@ -6,13 +6,13 @@ Ambivalence is NOT:
 
 
 
-\* mood
+* mood
 
-\* atmosphere
+* atmosphere
 
-\* emotional confusion
+* emotional confusion
 
-\* aesthetic contradiction
+* aesthetic contradiction
 
 
 
@@ -20,11 +20,11 @@ Ambivalence is a structural condition.
 
 
 
-\---
+---
 
 
 
-\## Structural Definition
+## Structural Definition
 
 
 
@@ -32,11 +32,11 @@ Ambivalence describes:
 
 
 
-\* simultaneous incompatible states
+* simultaneous incompatible states
 
-\* unresolved coexistence
+* unresolved coexistence
 
-\* non-finalized structural relation
+* non-finalized structural relation
 
 
 
@@ -44,13 +44,13 @@ Ambivalence may appear:
 
 
 
-\* emotional
+* emotional
 
-\* spatial
+* spatial
 
-\* symbolic
+* symbolic
 
-\* observational
+* observational
 
 
 
@@ -58,11 +58,11 @@ but should not be reduced to emotion alone.
 
 
 
-\---
+---
 
 
 
-\## Topological Interpretation
+## Topological Interpretation
 
 
 
@@ -70,19 +70,19 @@ Ambivalence may be interpreted as:
 
 
 
-\* non-Hausdorff coexistence
+* non-Hausdorff coexistence
 
-\* unresolved boundary persistence
+* unresolved boundary persistence
 
-\* simultaneous incompatible continuity
-
-
-
-\---
+* simultaneous incompatible continuity
 
 
 
-\## Operational Notes
+---
+
+
+
+## Operational Notes
 
 
 
