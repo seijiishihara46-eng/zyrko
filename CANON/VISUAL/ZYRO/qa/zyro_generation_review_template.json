@@ -1,0 +1,26 @@
+{
+  "id": "zyro_sci_fi_wall_0001",
+  "date": "2026-07-09",
+  "use_case": "sci_fi_wall",
+  "judgement": "good",
+  "reason": "Accepted sci-fi wall reference: Zyro is embedded in a massive dark wall, the right Void chamber remains a plain dark field, and no circular recess or extra inner mark appears.",
+  "drive_file_id": "",
+  "drive_file_url": "",
+  "prompt_version": "zyro_sci_fi_wall_v1",
+  "canon_version": "zyro-image-generation-canon.md",
+  "source_generation_id": "",
+  "qa": {
+    "reads_as_zyro": true,
+    "orbit_single_continuous": true,
+    "right_void_chamber_plain_dark": true,
+    "no_right_circular_recess": true,
+    "no_right_extra_inner_mark": true,
+    "left_spiral_restrained": true,
+    "silhouette_acceptable": true,
+    "atmosphere_usable": true,
+    "composition_usable": true
+  },
+  "failure_tags": [],
+  "next_rule_update": null,
+  "notes": "Use this as the starting template for future Zyro generation reviews."
+}

@@ -1,0 +1,41 @@
+{
+  "run_id": "zyro_chamber_wall_hoodie_composite_0001",
+  "input_image": "Drive or local path to chamber image",
+  "output_image": "outputs/zyro_chamber_wall_hoodie_composite_0001/composited.png",
+  "targets": [
+    {
+      "id": "wall_top_zyro",
+      "source_svg": "CANON/SYMBOLS/zyro-glyph-canonical.svg",
+      "mode": "wall_carve",
+      "quad": [[375, 80], [1025, 80], [1010, 330], [390, 330]],
+      "opacity": 0.95,
+      "blend": "screen",
+      "tint": "#f3e6c8",
+      "material": {
+        "bevel_px": 2,
+        "blur_px": 0.4,
+        "shadow_px": 4,
+        "glow_px": 8,
+        "texture_follow": true
+      },
+      "notes": "Official glyph canon embedded in the upper wall. The SVG shape must remain exact; material effects only after placement."
+    },
+    {
+      "id": "seiji_hoodie_brand_logo",
+      "source_svg": "CANON/SYMBOLS/zyro-print-master.svg",
+      "mode": "logo_print",
+      "quad": [[910, 850], [1165, 895], [1145, 1010], [895, 955]],
+      "opacity": 0.9,
+      "blend": "screen",
+      "tint": "#d8d8d8",
+      "material": {
+        "bevel_px": 0,
+        "blur_px": 0.6,
+        "shadow_px": 1.5,
+        "glow_px": 0,
+        "texture_follow": true
+      },
+      "notes": "B print master used as clothing brand logo on Seiji hoodie. Should read as printed fabric, not glowing wall glyph."
+    }
+  ]
+}

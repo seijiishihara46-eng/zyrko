@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "zyro_generation_review.schema.json",
+  "title": "Zyro Generation Review",
+  "type": "object",
+  "required": [
+    "id",
+    "date",
+    "use_case",
+    "judgement",
+    "reason",
+    "prompt_version",
+    "canon_version",
+    "qa"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable image/review ID, e.g. zyro_sci_fi_wall_0001"
+    },
+    "date": {
+      "type": "string",
+      "format": "date"
+    },
+    "use_case": {
+      "type": "string",
+      "enum": [
+        "sci_fi_wall",
+        "hush_face",
+        "product_mockup",
+        "ancient_relic",
+        "ui_symbol",
+        "poster",
+        "other"
+      ]
+    },
+    "judgement": {
+      "type": "string",
+      "enum": ["good", "bad", "hold"]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "drive_file_id": {
+      "type": "string"
+    },
+    "drive_file_url": {
+      "type": "string"
+    },
+    "prompt_version": {
+      "type": "string"
+    },
+    "canon_version": {
+      "type": "string"
+    },
+    "source_generation_id": {
+      "type": "string"
+    },
+    "qa": {
+      "type": "object",
+      "required": [
+        "reads_as_zyro",
+        "orbit_single_continuous",
+        "right_void_chamber_plain_dark",
+        "no_right_circular_recess",
+        "no_right_extra_inner_mark",
+        "left_spiral_restrained",
+        "silhouette_acceptable"
+      ],
+      "properties": {
+        "reads_as_zyro": {"type": "boolean"},
+        "orbit_single_continuous": {"type": "boolean"},
+        "right_void_chamber_plain_dark": {"type": "boolean"},
+        "no_right_circular_recess": {"type": "boolean"},
+        "no_right_extra_inner_mark": {"type": "boolean"},
+        "left_spiral_restrained": {"type": "boolean"},
+        "silhouette_acceptable": {"type": "boolean"},
+        "atmosphere_usable": {"type": "boolean"},
+        "composition_usable": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "failure_tags": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "right_circular_recess",
+          "right_crescent_line",
+          "right_eye_lens",
+          "right_extra_inner_mark",
+          "right_oval_ring",
+          "orbit_multiple_lines",
+          "generic_infinity_logo",
+          "left_spiral_overdecorated",
+          "wall_detail_invades_symbol",
+          "silhouette_drift",
+          "low_brand_fit",
+          "other"
+        ]
+      }
+    },
+    "next_rule_update": {
+      "type": ["string", "null"]
+    },
+    "notes": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}
